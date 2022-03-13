@@ -1,8 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Layout from '../Layout';
 import RegisterForm from './RegisterForm';
 
 const Register = () => {
+    const { t } = useTranslation();
     return (
         <React.Fragment>
             <Layout>
@@ -16,10 +18,10 @@ const Register = () => {
                         </div>
                         <div>
                             <h1 className="text-2xl font-bold mb-2">
-                                Welcome to Coronatime
+                                {t('Welcome to Coronatime')}
                             </h1>
                             <h2 className="text-xl font-normal text-dark">
-                                Please enter required info to sign up
+                                {t('Please enter required info to sign up')}
                             </h2>
                         </div>
 

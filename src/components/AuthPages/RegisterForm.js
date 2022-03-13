@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 const RegisterForm = () => {
+    const { t } = useTranslation();
+
     const {
         handleSubmit,
         register,
@@ -31,23 +34,27 @@ const RegisterForm = () => {
             >
                 <div className="flex flex-col relative">
                     <label htmlFor="username" className="mb-2">
-                        Username
+                        {t('Username')}
                     </label>
                     <input
                         {...register('username', {
-                            required: 'The username field is required',
+                            required: t(
+                                'The username must be at least 3 characters.'
+                            ),
                             minLength: {
                                 value: 3,
-                                message:
-                                    'The username must be at least 3 characters.',
+                                message: t(
+                                    'The username must be at least 3 characters.'
+                                ),
                             },
                         })}
                         className={`px-4 py-4 rounded-lg border ${
                             errors.username && 'border-red-600'
                         } mb-1 placeholder-dark`}
+                        required
                         type="text"
                         name="username"
-                        placeholder="Enter unique username or email"
+                        placeholder={t('Enter unique username or email')}
                     />
                 </div>
                 {/*@error('username')*/}
@@ -65,18 +72,21 @@ const RegisterForm = () => {
 
                 <div className="flex flex-col relative">
                     <label htmlFor="email" className="mb-2">
-                        Email
+                        {t('Email')}
                     </label>
                     <input
                         {...register('email', {
-                            required: 'The email field is required',
+                            required: t(
+                                'The email must be a valid email address.'
+                            ),
                         })}
                         className={`px-4 py-4 rounded-lg border ${
                             errors.email && 'border-red-600'
                         } mb-1 placeholder-dark`}
+                        required
                         type="email"
                         name="email"
-                        placeholder="Enter your email"
+                        placeholder={t('Enter your email')}
                     />
 
                     {/*@error('email')*/}
@@ -95,24 +105,28 @@ const RegisterForm = () => {
 
                 <div className="flex flex-col relative">
                     <label htmlFor="password" className="mb-2">
-                        Password
+                        {t('Password')}
                     </label>
                     <input
                         {...register('password', {
-                            required: 'The password field is required',
+                            required: t(
+                                'The password must be at least 3 characters.'
+                            ),
                             minLength: {
                                 value: 3,
-                                message:
-                                    'The password must be at least 3 characters.',
+                                message: t(
+                                    'The password must be at least 3 characters.'
+                                ),
                             },
                         })}
                         className={`px-4 py-4 rounded-lg border ${
                             errors.password && 'border-red-600'
                         } mb-1 placeholder-dark`}
+                        required
                         type="password"
                         name="password"
                         id="password"
-                        placeholder="Fill in password"
+                        placeholder={t('Fill in password')}
                     />
 
                     <span className="text-sm text-red-600 flex mb-2 mt-1">
@@ -130,17 +144,25 @@ const RegisterForm = () => {
 
                 <div className="flex flex-col relative">
                     <label htmlFor="password_confirmation" className="mb-2">
-                        Repeat password
+                        {t('Repeat password')}
                     </label>
                     <input
                         {...register('repeatPassword', {
-                            required:
-                                'The password confirmation field is required',
+                            required: t(
+                                'The password must be at least 3 characters.'
+                            ),
+                            minLength: {
+                                value: 3,
+                                message: t(
+                                    'The password must be at least 3 characters.'
+                                ),
+                            },
                         })}
                         id="repeatPassword"
                         className={`px-4 py-4 rounded-lg border ${
                             errors.repeatPassword && 'border-red-600'
                         } mb-1 placeholder-dark`}
+                        required
                         type="password"
                         name="repeatPassword"
                         placeholder="Repeat password"
@@ -166,7 +188,7 @@ const RegisterForm = () => {
                         className="border border-gray-200 text-success transition duration-100 ease-in rounded-4 form-checkbox"
                     />
                     <label className="ml-1" htmlFor="remember">
-                        Remember this device
+                        {t('Remember this device')}
                     </label>
                 </div>
                 <div>
@@ -175,14 +197,14 @@ const RegisterForm = () => {
                         className="py-4 transition duration-150 ease-in text-white font-semibold
         uppercase hover:bg-hover-success bg-success my-5 w-full rounded-md"
                     >
-                        Sign Up
+                        {t('Sign Up')}
                     </button>
                 </div>
 
                 <div className="flex items-center justify-center space-x-2">
-                    <p className="text-dark">Already have an account?</p>
+                    <p className="text-dark">{t('Already have an account?')}</p>
                     <Link className="font-semibold hover:underline" to="/login">
-                        Log In
+                        {t('Log In')}
                     </Link>
                 </div>
             </form>
