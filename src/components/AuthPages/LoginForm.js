@@ -1,34 +1,56 @@
 import React from "react";
+
 import {Link} from "react-router-dom";
+import {useForm} from "react-hook-form";
 
 const LoginForm = () => {
+    const {handleSubmit, register, formState: {errors}} = useForm({
+        mode: 'onChange',
+        defaultValues: {
+            username: '', password: '',
+        }
+    });
+
+    const submitFormHandler = (data) => {
+        console.log(data);
+    };
+
     return (
-        <form action="#" method="post" className="flex flex-col w-full mt-2 md:w-6/12">
+        <form onSubmit={handleSubmit(submitFormHandler)} method="post" className="flex flex-col w-full mt-2 md:w-6/12">
 
             <div className="flex flex-col relative">
                 <label htmlFor="username" className="mb-2">Username</label>
                 <input
-                    className="px-4 py-4 rounded-lg border border-red-600 border-green-600 border-gray-200 mb-1 placeholder-dark"
+                    {...register('username', {
+                        required: 'The username field is required',
+                        minLength: {value: 3, message: 'The username must be at least 3 characters.'},
+                    })}
+                    className={`px-4 py-4 rounded-lg border ${errors.username && 'border-red-600'} mb-1 placeholder-dark`}
                     type="text"
                     name="username" placeholder="Enter unique username or email"/>
             </div>
             <span className="text-sm text-red-600 flex mb-2 mt-1">
-                <img className="mr-1 w-5 h-5"
-                     src={require('../../assets/img/validation/error-warning-fill.png')}
-                     alt="error"/>
-                    error message
+                {errors.username && <img className="mr-1 w-5 h-5"
+                                         src={require('../../assets/img/validation/error-warning-fill.png')}
+                                         alt="error"/>}
+                {errors.username?.message}
             </span>
 
             <div className="flex flex-col relative">
                 <label htmlFor="password" className="mb-2">Password</label>
                 <input
-                    className="px-4 py-4 rounded-lg border border-red-600 @else border-green-600 border-gray-200 mb-2 placeholder-dark"
+                    {...register('password', {
+                        required: 'The password field is required',
+                        minLength: {value: 3, message: 'The password must be at least 3 characters.'}
+                    })}
+                    className={`px-4 py-4 rounded-lg border ${errors.password ? 'border-red-600' : 'border-gray-200'} mb-1 placeholder-dark`}
                     type="password"
                     name="password" id="password" placeholder="Fill in password"/>
                 <span className="text-sm text-red-600 flex mb-2 mt-1">
-                <img className="mr-1 w-5 h-5" src={require('../../assets/img/validation/error-warning-fill.png')}
-                     alt="error"/>
-                    error message
+                {errors.password && <img className="mr-1 w-5 h-5"
+                                         src={require('../../assets/img/validation/error-warning-fill.png')}
+                                         alt="error"/>}
+                    {errors.password?.message}
             </span>
             </div>
 
@@ -56,8 +78,8 @@ const LoginForm = () => {
                 <Link to="/register" className="font-semibold hover:underline">
                     Sign Up for free</Link>
             </div>
-        </form>
-    );
+        </form>);
+
 };
 
 export default LoginForm;
