@@ -33,7 +33,7 @@ const Layout = (props) => {
                             onClick={() => setIsOpen(!isOpen)}
                             className="flex items-center cursor-pointer"
                         >
-                            English
+                            {langCtx.lang === 'en' ? 'English' : 'Georgian'}
                             <span>
                                 <img
                                     className="ml-2"
