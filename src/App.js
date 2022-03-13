@@ -13,7 +13,7 @@ function App() {
                     <Route path={'/'} element={<Navigate to={'/login'} />} />
                     <Route path={'/login'} exact element={<Login />} />
                     <Route path={'/register'} element={<Register />} />
-                    <Route path={'*'} element={<NotFound/>}/>
+                    <Route path={'*'} element={<NotFound />} />
                 </Routes>
             </LanguageProvider>
         </div>

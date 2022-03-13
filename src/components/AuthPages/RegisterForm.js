@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +9,7 @@ const RegisterForm = () => {
     const {
         handleSubmit,
         register,
+        watch,
         formState: { errors },
     } = useForm({
         mode: 'onChange',
@@ -19,6 +20,9 @@ const RegisterForm = () => {
             repeatPassword: '',
         },
     });
+
+    const password = useRef({});
+    password.current = watch('password', '');
 
     const submitFormHandler = (data) => {
         console.log(data);
@@ -57,7 +61,6 @@ const RegisterForm = () => {
                         placeholder={t('Enter unique username or email')}
                     />
                 </div>
-                {/*@error('username')*/}
                 <span className="text-sm text-red-600 flex mb-2 mt-1">
                     {errors.username && (
                         <img
@@ -89,7 +92,6 @@ const RegisterForm = () => {
                         placeholder={t('Enter your email')}
                     />
 
-                    {/*@error('email')*/}
                     <span className="text-sm text-red-600 flex mb-2 mt-1">
                         {errors.email && (
                             <img
@@ -148,6 +150,14 @@ const RegisterForm = () => {
                     </label>
                     <input
                         {...register('repeatPassword', {
+                            validate: (value) => {
+                                return (
+                                    value === password.current ||
+                                    t(
+                                        'The password confirmation and password must match.'
+                                    )
+                                );
+                            },
                             required: t(
                                 'The password must be at least 3 characters.'
                             ),
@@ -165,7 +175,7 @@ const RegisterForm = () => {
                         required
                         type="password"
                         name="repeatPassword"
-                        placeholder="Repeat password"
+                        placeholder={t('Repeat password')}
                     />
 
                     <span className="text-sm text-red-600 flex mb-2 mt-1">
