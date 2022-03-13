@@ -1,12 +1,15 @@
 import React from 'react';
-import {Routes, Route, Link} from "react-router-dom";
-import Login from "./components/Login/Login";
+import {Navigate, Route, Routes} from "react-router-dom";
+import Login from "./components/AuthPages/Login";
+import Register from "./components/AuthPages/Register";
 
 function App() {
     return (
         <div>
             <Routes>
-                <Route path={'/login'} element={<Login/>}/>
+                <Route path={"/"} element={<Navigate to={'/login'}/>}/>
+                <Route path={'/login'} exact element={<Login/>}/>
+                <Route path={'/register'} element={<Register/>}/>
             </Routes>
         </div>
     );

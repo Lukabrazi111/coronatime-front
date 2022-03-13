@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const LoginForm = () => {
     return (
@@ -52,8 +53,8 @@ const LoginForm = () => {
 
             <div className="flex items-center justify-center space-x-2">
                 <p className="text-dark">Don't have an account?</p>
-                <a className="font-semibold hover:underline" href="#register">
-                    Sign Up for free</a>
+                <Link to="/register" className="font-semibold hover:underline">
+                    Sign Up for free</Link>
             </div>
         </form>
     );

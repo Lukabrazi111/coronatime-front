@@ -2,18 +2,16 @@ import React, {useEffect, useRef, useState} from "react";
 import {Link} from "react-router-dom";
 
 const Layout = (props) => {
-    const [open, setOpen] = useState(false);
-    const dropDownRef = useRef();
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         /*
         * close language
-        * menu if you click
-        * outside a target
+        * menu on click
         * */
         let handler = event => {
-            if (!dropDownRef.current.contains(event.target) || event.target.classList.contains('lang')) {
-                setOpen(false);
+            if (event.target.classList.contains('lang')) {
+                setIsOpen(false);
             }
         }
 
@@ -22,31 +20,32 @@ const Layout = (props) => {
         return () => {
             document.removeEventListener('click', handler);
         };
-    })
+    }, [])
+
 
     return (
         <React.Fragment>
-            <div ref={dropDownRef} className="absolute right-1/2 top-2">
+            <div className="absolute right-1/2 top-2">
                 <ul>
                     <li>
-                        <button onClick={() => setOpen(!open)} className="flex items-center cursor-pointer">
+                        <button onClick={() => setIsOpen(!isOpen)} className="flex items-center cursor-pointer">
                             English
                             <span>
                                 <img className="ml-2" src={require('../assets/img/Stroke 165.png')} alt="arrowDown"/>
                             </span>
                         </button>
-                        {open && <div
+                        {isOpen && <div
                             className="shadow-md w-36 absolute left-0 top-9 rounded-lg bg-gray-200 bg-opacity-75 text-black">
                             <ul>
                                 <li>
-                                    <Link to='#en'
+                                    <Link to=""
                                           className="lang text-left px-4 p-3 transition duration-150 ease-in hover:bg-gray-300 rounded w-full block">
                                         English
                                     </Link>
                                 </li>
 
                                 <li>
-                                    <Link to="#ka"
+                                    <Link to=""
                                           className="lang text-left px-4 p-3 transition duration-150 ease-in hover:bg-gray-300 rounded w-full block">
                                         ქართული
                                     </Link>
@@ -56,7 +55,6 @@ const Layout = (props) => {
                     </li>
                 </ul>
             </div>
-
             {props.children}
         </React.Fragment>
     );
