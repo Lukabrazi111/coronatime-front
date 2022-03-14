@@ -29,7 +29,6 @@ const Login = () => {
 
                         <LoginForm />
                     </div>
-
                     <div>
                         <img
                             className="h-screen md:block hidden"
@@ -37,14 +36,6 @@ const Login = () => {
                             alt="capsuleImg"
                         />
                     </div>
-
-                    {/*<div className="animate-pulse fixed bottom-8 left-4 bg-success px-5 py-3 rounded-xl">*/}
-                    {/*    <span className="text-white">session('success_message')</span>*/}
-                    {/*</div>*/}
-                    {/* Error message */}
-                    {/*<div className="animate-pulse fixed bottom-8 left-4 bg-red-500 px-5 py-3 rounded-xl">*/}
-                    {/*    <span className="text-white">error message</span>*/}
-                    {/*</div>*/}
                 </main>
             </Layout>
         </React.Fragment>

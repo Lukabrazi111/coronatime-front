@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 
-import {Link, useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';
 import api from '../../utilities/axios-hook';
@@ -10,7 +10,6 @@ import Loading from "../../UI/Loading";
 
 const LoginForm = () => {
     const {t} = useTranslation();
-    const redirect = useNavigate();
     const [error, setError] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const authCtx = useContext(AuthContext);
@@ -35,8 +34,8 @@ const LoginForm = () => {
             const responseData = await response.data;
 
             if (responseData.loggedIn) {
+                window.location.href = '/dashboard';
                 authCtx.login(responseData.access_token);
-                redirect('/dashboard');
                 setIsLoading(false);
             }
 
