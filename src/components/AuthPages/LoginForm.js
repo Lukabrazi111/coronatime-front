@@ -1,16 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
+import {Link, useNavigate} from 'react-router-dom';
+import {useForm} from 'react-hook-form';
+import {useTranslation} from 'react-i18next';
+
+import api from '../../utilities/axios-hook';
 
 const LoginForm = () => {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
+    const redirect = useNavigate();
+    const [error, setError] = useState([]);
 
     const {
         handleSubmit,
         register,
-        formState: { errors },
+        formState: {errors},
     } = useForm({
         mode: 'onChange',
         defaultValues: {
@@ -19,8 +23,21 @@ const LoginForm = () => {
         },
     });
 
-    const submitFormHandler = (data) => {
-        console.log(data);
+    const submitFormHandler = async (data) => {
+        try {
+            const response = await api.post('/login', data);
+            const responseData = await response.data;
+
+            console.log(response);
+
+            if (responseData.loggedIn) {
+                redirect('/dashboard');
+            }
+
+            setError(responseData);
+        } catch (error) {
+            alert(error.message);
+        }
     };
 
     return (
@@ -90,6 +107,7 @@ const LoginForm = () => {
                     id="password"
                     placeholder={t('Fill in password')}
                 />
+                <p className='text-red-600'>{t(error.error_message)}</p>
                 <span className="text-sm text-red-600 flex mb-2 mt-1">
                     {errors.password && (
                         <img

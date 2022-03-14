@@ -5,6 +5,7 @@ import RegisterForm from './RegisterForm';
 
 const Register = () => {
     const { t } = useTranslation();
+    
     return (
         <React.Fragment>
             <Layout>
