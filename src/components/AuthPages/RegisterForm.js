@@ -42,19 +42,18 @@ const RegisterForm = () => {
                 }, 4500)
                 setIsLoading(false)
             }
-
         } catch (error) {
             setIsLoading(false)
             const errorHandler = error.response.data.errors;
             if (errorHandler.username) {
-                setNotification({color: 'bg-red-600', message: errorHandler.username[0]});
+                setNotification({color: 'bg-red-600', message: t(errorHandler.username[0])});
                 const timer = setTimeout(() => {
                     setNotification({color: '', message: ''});
                 }, 4500)
                 return () => clearTimeout(timer)
             }
             if (errorHandler.email) {
-                setNotification({color: 'bg-red-600', message: errorHandler.email[0]});
+                setNotification({color: 'bg-red-600', message: t(errorHandler.email[0])});
                 const timer = setTimeout(() => {
                     setNotification({color: '', message: ''});
                 }, 4500)
