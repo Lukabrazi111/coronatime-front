@@ -9,8 +9,6 @@ import Notification from "../../UI/Notification";
 const RegisterForm = () => {
     const {t} = useTranslation();
     const [isLoading, setIsLoading] = useState(false);
-    const [usernameExists, setUsernameExists] = useState('');
-    const [emailExists, setEmailExists] = useState('');
     const [notification, setNotification] = useState({color: '', message: ''});
 
     const {
@@ -27,7 +25,6 @@ const RegisterForm = () => {
             repeatPassword: '',
         },
     });
-
 
     const password = useRef({});
     password.current = watch('password', '');
@@ -50,10 +47,19 @@ const RegisterForm = () => {
             setIsLoading(false)
             const errorHandler = error.response.data.errors;
             if (errorHandler.username) {
-                setUsernameExists(errorHandler.username[0]);
+                setNotification({color: 'bg-red-600', message: errorHandler.username[0]});
+                const timer = setTimeout(() => {
+                    setNotification({color: '', message: ''});
+                }, 4500)
+                return () => clearTimeout(timer)
             }
             if (errorHandler.email) {
-                setEmailExists(errorHandler.email[0]);
+                setNotification({color: 'bg-red-600', message: errorHandler.email[0]});
+                const timer = setTimeout(() => {
+                    setNotification({color: '', message: ''});
+                }, 4500)
+
+                return () => clearTimeout(timer)
             }
         }
     };
@@ -84,7 +90,7 @@ const RegisterForm = () => {
                             },
                         })}
                         className={`px-4 py-4 rounded-lg border ${
-                            errors.username || usernameExists ? 'border-red-600' : null
+                            errors.username ? 'border-red-600' : null
                         } mb-1 placeholder-dark`}
                         required
                         type="text"
@@ -93,15 +99,14 @@ const RegisterForm = () => {
                     />
                 </div>
                 <span className="text-sm text-red-600 flex mb-2 mt-1">
-                    {errors.username || usernameExists ? (
+                    {errors.username && (
                         <img
                             className="mr-1 w-5 h-5"
                             src={require('../../assets/img/validation/error-warning-fill.png')}
                             alt="error"
                         />
-                    ): null}
+                    )}
                     {errors.username?.message}
-                    {usernameExists}
                 </span>
 
                 <div className="flex flex-col relative">
@@ -115,7 +120,7 @@ const RegisterForm = () => {
                             ),
                         })}
                         className={`px-4 py-4 rounded-lg border ${
-                            errors.email || emailExists ? 'border-red-600' : null
+                            errors.email ? 'border-red-600' : null
                         } mb-1 placeholder-dark`}
                         required
                         type="email"
