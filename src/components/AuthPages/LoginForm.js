@@ -5,11 +5,13 @@ import {useForm} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';
 
 import api from '../../utilities/axios-hook';
+import Loading from "../../UI/Loading";
 
 const LoginForm = () => {
     const {t} = useTranslation();
     const redirect = useNavigate();
     const [error, setError] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const {
         handleSubmit,
@@ -25,17 +27,19 @@ const LoginForm = () => {
 
     const submitFormHandler = async (data) => {
         try {
+            setIsLoading(true);
             const response = await api.post('/login', data);
             const responseData = await response.data;
 
-            console.log(response);
-
             if (responseData.loggedIn) {
                 redirect('/dashboard');
+                setIsLoading(false);
             }
 
             setError(responseData);
+            setIsLoading(false);
         } catch (error) {
+            setIsLoading(false);
             alert(error.message);
         }
     };
@@ -120,7 +124,7 @@ const LoginForm = () => {
                 </span>
             </div>
 
-            <div className="flex justify-between items-center mt-2">
+            {isLoading ? <Loading/> : <div className="flex justify-between items-center mt-2">
                 <div className="flex items-center gap-1">
                     <input
                         type="checkbox"
@@ -137,7 +141,7 @@ const LoginForm = () => {
                         {t('Forgot password?')}
                     </a>
                 </div>
-            </div>
+            </div>}
 
             <div>
                 <button

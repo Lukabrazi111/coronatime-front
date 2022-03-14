@@ -1,16 +1,23 @@
-import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
+import React, {useRef, useState} from 'react';
+import {Link} from 'react-router-dom';
+import {useForm} from 'react-hook-form';
+import {useTranslation} from 'react-i18next';
+import api from '../../utilities/axios-hook';
+import Loading from "../../UI/Loading";
+import Notification from "../../UI/Notification";
 
 const RegisterForm = () => {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
+    const [isLoading, setIsLoading] = useState(false);
+    const [usernameExists, setUsernameExists] = useState('');
+    const [emailExists, setEmailExists] = useState('');
+    const [notification, setNotification] = useState({color: '', message: ''});
 
     const {
         handleSubmit,
         register,
         watch,
-        formState: { errors },
+        formState: {errors},
     } = useForm({
         mode: 'onChange',
         defaultValues: {
@@ -21,15 +28,39 @@ const RegisterForm = () => {
         },
     });
 
+
     const password = useRef({});
     password.current = watch('password', '');
 
-    const submitFormHandler = (data) => {
-        console.log(data);
+    const submitFormHandler = async (data) => {
+        try {
+            setIsLoading(true);
+            const response = await api.post('/register', data);
+            const responseData = await response.data;
+
+            if (responseData.send_verification) {
+                setNotification({color: 'bg-green-600', message: responseData.message});
+                setTimeout(() => {
+                    setNotification({color: '', message: ''});
+                }, 4500)
+                setIsLoading(false)
+            }
+
+        } catch (error) {
+            setIsLoading(false)
+            const errorHandler = error.response.data.errors;
+            if (errorHandler.username) {
+                setUsernameExists(errorHandler.username[0]);
+            }
+            if (errorHandler.email) {
+                setEmailExists(errorHandler.email[0]);
+            }
+        }
     };
 
     return (
         <React.Fragment>
+            {notification.message && <Notification color={notification.color} message={notification.message}/>}
             <form
                 onSubmit={handleSubmit(submitFormHandler)}
                 action="#"
@@ -53,7 +84,7 @@ const RegisterForm = () => {
                             },
                         })}
                         className={`px-4 py-4 rounded-lg border ${
-                            errors.username && 'border-red-600'
+                            errors.username || usernameExists ? 'border-red-600' : null
                         } mb-1 placeholder-dark`}
                         required
                         type="text"
@@ -62,15 +93,15 @@ const RegisterForm = () => {
                     />
                 </div>
                 <span className="text-sm text-red-600 flex mb-2 mt-1">
-                    {errors.username && (
+                    {errors.username || usernameExists ? (
                         <img
                             className="mr-1 w-5 h-5"
                             src={require('../../assets/img/validation/error-warning-fill.png')}
                             alt="error"
                         />
-                    )}
-
+                    ): null}
                     {errors.username?.message}
+                    {usernameExists}
                 </span>
 
                 <div className="flex flex-col relative">
@@ -84,7 +115,7 @@ const RegisterForm = () => {
                             ),
                         })}
                         className={`px-4 py-4 rounded-lg border ${
-                            errors.email && 'border-red-600'
+                            errors.email || emailExists ? 'border-red-600' : null
                         } mb-1 placeholder-dark`}
                         required
                         type="email"
@@ -190,7 +221,7 @@ const RegisterForm = () => {
                     </span>
                 </div>
 
-                <div className="flex items-center gap-1">
+                {isLoading ? <Loading/> : <div className="flex items-center gap-1">
                     <input
                         type="checkbox"
                         id="remember"
@@ -200,7 +231,7 @@ const RegisterForm = () => {
                     <label className="ml-1" htmlFor="remember">
                         {t('Remember this device')}
                     </label>
-                </div>
+                </div>}
                 <div>
                     <button
                         type="submit"
