@@ -137,9 +137,9 @@ const LoginForm = () => {
                     </label>
                 </div>
                 <div>
-                    <a className="hover:underline text-link" href="#forgotpwd">
+                    <Link className="hover:underline text-link" to="/forgot-password">
                         {t('Forgot password?')}
-                    </a>
+                    </Link>
                 </div>
             </div>}
 

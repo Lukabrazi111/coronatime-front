@@ -53,5 +53,7 @@
     "The username has already been taken.": "The username has already been taken.",
     "The email must be a valid email address.": "The email must be a valid email address.",
     "The username must not be greater than 255 characters.": "The username must not be greater than 255 characters.",
-    "Your account is confirmed, you can sign in": "Your account is confirmed, you can sign in"
+    "Your account is confirmed, you can sign in": "Your account is confirmed, you can sign in",
+    "The selected email is invalid!" : "The selected email is invalid!",
+    "Please check your email to reset password" : "Please check your email to reset password"
 }
