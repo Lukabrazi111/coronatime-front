@@ -1,21 +1,24 @@
-import React, {useRef, useState} from 'react';
-import {Link} from 'react-router-dom';
-import {useForm} from 'react-hook-form';
-import {useTranslation} from 'react-i18next';
+import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import api from '../../utilities/axios-hook';
-import Loading from "../../UI/Loading";
-import Notification from "../../UI/Notification";
+import Loading from '../../UI/Loading';
+import Notification from '../../UI/Notification';
 
 const RegisterForm = () => {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const [isLoading, setIsLoading] = useState(false);
-    const [notification, setNotification] = useState({color: '', message: ''});
+    const [notification, setNotification] = useState({
+        color: '',
+        message: '',
+    });
 
     const {
         handleSubmit,
         register,
         watch,
-        formState: {errors},
+        formState: { errors },
     } = useForm({
         mode: 'onChange',
         defaultValues: {
@@ -36,36 +39,50 @@ const RegisterForm = () => {
             const responseData = await response.data;
 
             if (responseData.send_verification) {
-                setNotification({color: 'bg-green-600', message: responseData.message});
+                setNotification({
+                    color: 'bg-green-600',
+                    message: responseData.message,
+                });
                 setTimeout(() => {
-                    setNotification({color: '', message: ''});
-                }, 4500)
-                setIsLoading(false)
+                    setNotification({ color: '', message: '' });
+                }, 4500);
+                setIsLoading(false);
             }
         } catch (error) {
-            setIsLoading(false)
+            setIsLoading(false);
             const errorHandler = error.response.data.errors;
             if (errorHandler.username) {
-                setNotification({color: 'bg-red-600', message: t(errorHandler.username[0])});
+                setNotification({
+                    color: 'bg-red-600',
+                    message: t(errorHandler.username[0]),
+                });
                 const timer = setTimeout(() => {
-                    setNotification({color: '', message: ''});
-                }, 4500)
-                return () => clearTimeout(timer)
+                    setNotification({ color: '', message: '' });
+                }, 4500);
+                return () => clearTimeout(timer);
             }
             if (errorHandler.email) {
-                setNotification({color: 'bg-red-600', message: t(errorHandler.email[0])});
+                setNotification({
+                    color: 'bg-red-600',
+                    message: t(errorHandler.email[0]),
+                });
                 const timer = setTimeout(() => {
-                    setNotification({color: '', message: ''});
-                }, 4500)
+                    setNotification({ color: '', message: '' });
+                }, 4500);
 
-                return () => clearTimeout(timer)
+                return () => clearTimeout(timer);
             }
         }
     };
 
     return (
         <React.Fragment>
-            {notification.message && <Notification color={notification.color} message={notification.message}/>}
+            {notification.message && (
+                <Notification
+                    color={notification.color}
+                    message={notification.message}
+                />
+            )}
             <form
                 onSubmit={handleSubmit(submitFormHandler)}
                 action="#"
@@ -225,17 +242,21 @@ const RegisterForm = () => {
                     </span>
                 </div>
 
-                {isLoading ? <Loading/> : <div className="flex items-center gap-1">
-                    <input
-                        type="checkbox"
-                        id="remember"
-                        name="remember"
-                        className="border border-gray-200 text-success transition duration-100 ease-in rounded-4 form-checkbox"
-                    />
-                    <label className="ml-1" htmlFor="remember">
-                        {t('Remember this device')}
-                    </label>
-                </div>}
+                {isLoading ? (
+                    <Loading />
+                ) : (
+                    <div className="flex items-center gap-1">
+                        <input
+                            type="checkbox"
+                            id="remember"
+                            name="remember"
+                            className="border border-gray-200 text-success transition duration-100 ease-in rounded-4 form-checkbox"
+                        />
+                        <label className="ml-1" htmlFor="remember">
+                            {t('Remember this device')}
+                        </label>
+                    </div>
+                )}
                 <div>
                     <button
                         type="submit"

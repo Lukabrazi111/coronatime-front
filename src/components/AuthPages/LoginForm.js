@@ -1,15 +1,15 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 
-import {Link} from 'react-router-dom';
-import {useForm} from 'react-hook-form';
-import {useTranslation} from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import api from '../../utilities/axios-hook';
 import axios from 'axios';
 import AuthContext from '../../context/auth-context';
-import Loading from "../../UI/Loading";
+import Loading from '../../UI/Loading';
 
 const LoginForm = () => {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const [error, setError] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const authCtx = useContext(AuthContext);
@@ -17,7 +17,7 @@ const LoginForm = () => {
     const {
         handleSubmit,
         register,
-        formState: {errors},
+        formState: { errors },
     } = useForm({
         mode: 'onChange',
         defaultValues: {
@@ -114,7 +114,7 @@ const LoginForm = () => {
                     id="password"
                     placeholder={t('Fill in password')}
                 />
-                <p className='text-red-600'>{t(error.error_message)}</p>
+                <p className="text-red-600">{t(error.error_message)}</p>
                 <span className="text-sm text-red-600 flex mb-2 mt-1">
                     {errors.password && (
                         <img
@@ -127,24 +127,31 @@ const LoginForm = () => {
                 </span>
             </div>
 
-            {isLoading ? <Loading/> : <div className="flex justify-between items-center mt-2">
-                <div className="flex items-center gap-1">
-                    <input
-                        type="checkbox"
-                        id="remember"
-                        name="remember"
-                        className="border border-gray-200 text-success transition duration-100 ease-in rounded-4 form-checkbox"
-                    />
-                    <label className="ml-1" htmlFor="remember">
-                        {t('Remember this device')}
-                    </label>
+            {isLoading ? (
+                <Loading />
+            ) : (
+                <div className="flex justify-between items-center mt-2">
+                    <div className="flex items-center gap-1">
+                        <input
+                            type="checkbox"
+                            id="remember"
+                            name="remember"
+                            className="border border-gray-200 text-success transition duration-100 ease-in rounded-4 form-checkbox"
+                        />
+                        <label className="ml-1" htmlFor="remember">
+                            {t('Remember this device')}
+                        </label>
+                    </div>
+                    <div>
+                        <Link
+                            className="hover:underline text-link"
+                            to="/forgot-password"
+                        >
+                            {t('Forgot password?')}
+                        </Link>
+                    </div>
                 </div>
-                <div>
-                    <Link className="hover:underline text-link" to="/forgot-password">
-                        {t('Forgot password?')}
-                    </Link>
-                </div>
-            </div>}
+            )}
 
             <div>
                 <button

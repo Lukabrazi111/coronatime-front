@@ -1,5 +1,5 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import LanguageContext from '../context/language-context';
 
 const Layout = (props) => {
@@ -43,8 +43,7 @@ const Layout = (props) => {
                             </span>
                         </button>
                         {isOpen && (
-                            <div
-                                className="shadow-md w-36 absolute left-0 top-9 rounded-lg bg-gray-200 bg-opacity-75 text-black">
+                            <div className="shadow-md w-36 absolute left-0 top-9 rounded-lg bg-gray-200 bg-opacity-75 text-black">
                                 <ul>
                                     <li>
                                         <Link
