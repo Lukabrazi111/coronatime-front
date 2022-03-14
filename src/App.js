@@ -5,6 +5,7 @@ import Register from './components/AuthPages/Register';
 import {LanguageProvider} from './context/language-context';
 import Dashboard from "./components/Dashboard/Dashboard";
 import ForgotPassword from "./components/AuthPages/ForgotPassword/ForgotPassword";
+import NotFound from "./components/Error/NotFound";
 
 function App() {
     return (
@@ -16,7 +17,7 @@ function App() {
                     <Route path={'/register'} element={<Register/>}/>
                     <Route path={'/dashboard'} element={<Dashboard/>}/>
                     <Route path={'/forgot-password'} element={<ForgotPassword/>}/>
-                    {/*<Route path={'*'} element={<NotFound/>}/>*/}
+                    <Route path={'*'} element={<NotFound/>}/>
                 </Routes>
             </LanguageProvider>
         </div>

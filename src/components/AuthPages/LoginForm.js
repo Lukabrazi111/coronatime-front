@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 
 import {Link, useNavigate} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
 import {useTranslation} from 'react-i18next';
-
 import api from '../../utilities/axios-hook';
+import axios from 'axios';
+import AuthContext from '../../context/auth-context';
 import Loading from "../../UI/Loading";
 
 const LoginForm = () => {
@@ -12,6 +13,7 @@ const LoginForm = () => {
     const redirect = useNavigate();
     const [error, setError] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const authCtx = useContext(AuthContext);
 
     const {
         handleSubmit,
@@ -28,10 +30,12 @@ const LoginForm = () => {
     const submitFormHandler = async (data) => {
         try {
             setIsLoading(true);
+            await axios.get('http://localhost:8000/sanctum/csrf-cookie');
             const response = await api.post('/login', data);
             const responseData = await response.data;
 
             if (responseData.loggedIn) {
+                authCtx.login(responseData.access_token);
                 redirect('/dashboard');
                 setIsLoading(false);
             }
