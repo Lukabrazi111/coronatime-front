@@ -11,9 +11,9 @@ const Dashboard = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         const fetchDataHandler = async () => {
             try {
-                setIsLoading(true);
                 const response = await api.get('/statistics');
 
                 const responseData = response.data;

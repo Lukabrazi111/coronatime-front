@@ -10,10 +10,11 @@ const DashboardByCountryLists = () => {
     const [data, setData] = useState([]);
     const [order, setOrder] = useState('asc');
     const [isLoading, setIsLoading] = useState(false);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
+        setIsLoading(true);
         const fetchDataHandler = async () => {
-            setIsLoading(true);
             try {
                 const response = await api.get('/get-all-statistics');
                 const responseData = await response.data;
@@ -58,6 +59,7 @@ const DashboardByCountryLists = () => {
                     </div>
                     <div className="ml-3 md:m-0">
                         <input
+                            onChange={(event) => setSearch(event.target.value)}
                             type="search"
                             id="search"
                             className="md:w-72 pl-14 rounded-lg outline-none focus:outline-none border border-gray-200 py-3"
@@ -176,28 +178,40 @@ const DashboardByCountryLists = () => {
                         </thead>
 
                         <tbody className="bg-white divide-y divide-gray-200">
-                            {data.map((item) => (
-                                <tr key={item.id} className="whitespace-nowrap">
-                                    <td className="md:p-5 text-sm pl-2 text-black">
-                                        {item.name[langCtx.lang]}
-                                    </td>
-                                    <td>
-                                        <div className="text-sm text-black">
-                                            {item.confirmed}
-                                        </div>
-                                    </td>
-                                    <td className="">
-                                        <div className="text-sm text-black">
-                                            {item.deaths}
-                                        </div>
-                                    </td>
-                                    <td className="py-4 text-sm text-black">
-                                        {item.recovered}
-                                    </td>
-                                    <td className="py-4"></td>
-                                    <td className="py-4"></td>
-                                </tr>
-                            ))}
+                            {data
+                                .filter((value) => {
+                                    if (search === '') {
+                                        return value;
+                                    }
+                                    return value.name.en
+                                        .toLowerCase()
+                                        .includes(search);
+                                })
+                                .map((item) => (
+                                    <tr
+                                        key={item.id}
+                                        className="whitespace-nowrap"
+                                    >
+                                        <td className="md:p-5 text-sm pl-2 text-black">
+                                            {item.name[langCtx.lang]}
+                                        </td>
+                                        <td>
+                                            <div className="text-sm text-black">
+                                                {item.confirmed}
+                                            </div>
+                                        </td>
+                                        <td className="">
+                                            <div className="text-sm text-black">
+                                                {item.deaths}
+                                            </div>
+                                        </td>
+                                        <td className="py-4 text-sm text-black">
+                                            {item.recovered}
+                                        </td>
+                                        <td className="py-4"></td>
+                                        <td className="py-4"></td>
+                                    </tr>
+                                ))}
                         </tbody>
                     </table>
                 )}
