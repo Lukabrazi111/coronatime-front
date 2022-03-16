@@ -28,7 +28,12 @@ const Dashboard = () => {
                     stats.recovered = recoveredSum += data.recovered;
                     stats.deaths = deathSum += data.deaths;
                 }
-                setData(stats);
+
+                setData({
+                    critical: criticalSum.toLocaleString(),
+                    recovered: recoveredSum.toLocaleString(),
+                    deaths: deathSum.toLocaleString(),
+                });
 
                 setIsLoading(false);
             } catch (error) {
