@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import LanguageContext from '../../context/language-context';
 import AuthContext from '../../context/auth-context';
+import { useTranslation } from 'react-i18next';
 
 const DashboardHeader = (props) => {
+    const { t } = useTranslation();
     const langCtx = useContext(LanguageContext);
     const [isOpen, setIsOpen] = useState(false);
     const authCtx = useContext(AuthContext);
@@ -86,18 +88,21 @@ const DashboardHeader = (props) => {
                             </ul>
                         </div>
                         <div className="hidden md:flex items-center space-x-4">
-                            <p className="font-semibold">auth username</p>
+                            <p className="font-semibold">
+                                {localStorage.getItem('user')}
+                            </p>
                             <span className="border-r h-8 max-h-full"></span>
                         </div>
                         <div className="hidden md:block">
                             <a
                                 onClick={() => {
+                                    localStorage.removeItem('user');
                                     authCtx.logout();
                                 }}
                                 href="/login"
                                 className="text-black"
                             >
-                                Log Out
+                                {t('Log Out')}
                             </a>
                         </div>
 

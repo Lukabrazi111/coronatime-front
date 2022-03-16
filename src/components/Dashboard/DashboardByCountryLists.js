@@ -1,6 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const DashboardByCountryLists = () => {
+    const { t } = useTranslation();
+
     return (
         <div>
             <div className="mb-8">
@@ -17,7 +20,7 @@ const DashboardByCountryLists = () => {
                             type="search"
                             id="search"
                             className="md:w-72 pl-14 rounded-lg outline-none focus:outline-none border border-gray-200 py-3"
-                            placeholder="Search by country"
+                            placeholder={t('Search by country')}
                         />
                     </div>
                 </div>
@@ -30,7 +33,7 @@ const DashboardByCountryLists = () => {
                         <tr>
                             <th className="md:w-64 md:p-5 py-5 text-xs text-black md:rounded-tl-lg">
                                 <div className="flex inline-block gap-2">
-                                    Location
+                                    {t('Location')}
                                     <div className="flex inline-flex flex-col items-center">
                                         <button>
                                             <img
@@ -51,7 +54,7 @@ const DashboardByCountryLists = () => {
                             </th>
                             <th className="md:w-64 text-xs text-black">
                                 <div className="md:flex inline-block md:gap-2 break-all">
-                                    New cases
+                                    {t('New cases')}
                                     <div className="md:flex inline-flex flex-col items-center">
                                         <button>
                                             <img
@@ -72,7 +75,7 @@ const DashboardByCountryLists = () => {
                             </th>
                             <th className="md:w-64 text-xs text-black">
                                 <div className="md:flex inline-block md:gap-2 break-all">
-                                    Deaths
+                                    {t('Deaths')}
                                     <div className="md:flex inline-flex flex-col items-center">
                                         <button>
                                             <img
@@ -93,7 +96,7 @@ const DashboardByCountryLists = () => {
                             </th>
                             <th className="md:w-64 text-xs text-black">
                                 <div className="md:flex inline-block md:gap-2 break-all">
-                                    Recovered
+                                    {t('Recovered')}
                                     <div className="md:flex inline-flex flex-col items-center">
                                         <button>
                                             <img

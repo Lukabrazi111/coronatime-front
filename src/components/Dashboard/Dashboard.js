@@ -1,34 +1,61 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import DashboardHeader from './DashboardHeader';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import api from '../../utilities/axios-hook';
 
 const Dashboard = () => {
+    const { t } = useTranslation();
+    const [data, setData] = useState({});
+
+    useEffect(() => {
+        const fetchDataHandler = async () => {
+            const response = await api.get('/statistics');
+
+            const responseData = response.data;
+            const stats = { critical: null, recovered: null, deaths: null };
+            let criticalSum = 0;
+            let recoveredSum = 0;
+            let deathSum = 0;
+
+            for (const data of responseData) {
+                stats.critical = criticalSum += data.confirmed;
+                stats.recovered = recoveredSum += data.recovered;
+                stats.deaths = deathSum += data.deaths;
+            }
+            setData(stats);
+        };
+
+        fetchDataHandler();
+    }, []);
+
     return (
         <DashboardHeader>
             <div className="container mx-auto">
                 <section className="section__content pt-12 px-4 pb-12">
                     <div className="mb-8">
                         <h1 className="text-black text-2xl font-semibold">
-                            Worldwide Statistics
+                            {t('Worldwide Statistics')}
                         </h1>
                     </div>
                     <div className="mb-12">
                         <nav className="navbar">
                             <ul className="md:flex md:items-center md:space-x-14 space-y-2 md:space-y-0 md:border-b-2 md:pb-3">
                                 <li>
-                                    <a
-                                        href="/dashboard"
+                                    <Link
+                                        to="/dashboard"
                                         className="md:pb-4 pb-1 border-b-2 border-b-black text-lg font-semibold md:border-b-black md:border-b-4"
                                     >
-                                        Worldwide
-                                    </a>
+                                        {t('Worldwide')}
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a
-                                        href="/dashboard-by-country"
+                                    <Link
+                                        to="/dashboard-by-country"
                                         className="text-lg md:pb-4"
                                     >
-                                        By country
-                                    </a>
+                                        {t('By country')}
+                                    </Link>
                                 </li>
                             </ul>
                         </nav>
@@ -46,13 +73,13 @@ const Dashboard = () => {
 
                                     <div>
                                         <h3 className="text-black text-xl">
-                                            New cases
+                                            {t('New cases')}
                                         </h3>
                                     </div>
 
                                     <div>
                                         <h1 className="text-brand-primary font-black text-4xl">
-                                            confirmed
+                                            {data.critical}
                                         </h1>
                                     </div>
                                 </div>
@@ -69,13 +96,13 @@ const Dashboard = () => {
 
                                     <div>
                                         <h3 className="text-black text-xl">
-                                            Recovered
+                                            {t('Recovered')}
                                         </h3>
                                     </div>
 
                                     <div>
                                         <h1 className="text-brand-secondary font-black text-4xl">
-                                            recovered
+                                            {data.recovered}
                                         </h1>
                                     </div>
                                 </div>
@@ -92,13 +119,13 @@ const Dashboard = () => {
 
                                     <div>
                                         <h3 className="text-black text-xl">
-                                            Deaths
+                                            {t('Deaths')}
                                         </h3>
                                     </div>
 
                                     <div>
                                         <h1 className="text-brand-tertiary font-black text-4xl">
-                                            deaths
+                                            {data.deaths}
                                         </h1>
                                     </div>
                                 </div>

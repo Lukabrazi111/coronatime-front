@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -32,9 +32,11 @@ const LoginForm = () => {
             await axios.get('http://localhost:8000/sanctum/csrf-cookie');
             const response = await api.post('/login', data);
             const responseData = await response.data;
+            const user = response.data.username;
 
             if (responseData.loggedIn) {
                 window.location.href = '/dashboard';
+                localStorage.setItem('user', user);
                 authCtx.login(responseData.access_token);
                 setIsLoading(false);
             }
