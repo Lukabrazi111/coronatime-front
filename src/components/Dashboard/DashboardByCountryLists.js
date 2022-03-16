@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import api from '../../utilities/axios-hook';
+import LanguageContext from '../../context/language-context';
 
 const DashboardByCountryLists = () => {
     const { t } = useTranslation();
+    const langCtx = useContext(LanguageContext);
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        const fetchDataHandler = async () => {
+            try {
+                const response = await api.get('/get-all-statistics');
+                const responseData = await response.data;
+                setData(responseData);
+            } catch (error) {
+                alert(error.message);
+            }
+        };
+        fetchDataHandler();
+    }, []);
+
 
     return (
         <div>
@@ -26,8 +45,7 @@ const DashboardByCountryLists = () => {
                 </div>
             </div>
 
-            {/*overflow hidden*/}
-            <div className="overflow-hidden relative h-max">
+            <div className="overflow-scroll h-125 relative h-max">
                 <table className="divide-y divide-gray-200 w-full text-left">
                     <thead className="bg-gray-200">
                         <tr>
@@ -120,27 +138,28 @@ const DashboardByCountryLists = () => {
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                        <tr className="whitespace-nowrap">
-                            <td className="md:p-5 text-sm pl-2 text-black">
-                                country name
-                            </td>
-                            <td>
-                                <div className="text-sm text-black">
-                                    country confirmed
-                                </div>
-                            </td>
-                            <td className="">
-                                <div className="text-sm text-black">
-                                    country deaths
-                                </div>
-                            </td>
-                            <td className="py-4 text-sm text-black">
-                                country recovered
-                            </td>
-                            <td className="py-4"></td>
-                            <td className="py-4"></td>
-                        </tr>
-                        {/*<div className="absolute top-16 left-2">Nothing found for this query {{$search}}...</div>*/}
+                        {data.map((item) => (
+                            <tr key={item.id} className="whitespace-nowrap">
+                                <td className="md:p-5 text-sm pl-2 text-black">
+                                    {item.name[langCtx.lang]}
+                                </td>
+                                <td>
+                                    <div className="text-sm text-black">
+                                        {item.confirmed}
+                                    </div>
+                                </td>
+                                <td className="">
+                                    <div className="text-sm text-black">
+                                        {item.deaths}
+                                    </div>
+                                </td>
+                                <td className="py-4 text-sm text-black">
+                                    {item.recovered}
+                                </td>
+                                <td className="py-4"></td>
+                                <td className="py-4"></td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

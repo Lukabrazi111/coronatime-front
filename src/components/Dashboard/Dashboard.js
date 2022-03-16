@@ -10,20 +10,25 @@ const Dashboard = () => {
 
     useEffect(() => {
         const fetchDataHandler = async () => {
-            const response = await api.get('/statistics');
+            try {
+                const response = await api.get('/statistics');
 
-            const responseData = response.data;
-            const stats = { critical: null, recovered: null, deaths: null };
-            let criticalSum = 0;
-            let recoveredSum = 0;
-            let deathSum = 0;
+                const responseData = response.data;
+                const stats = { critical: null, recovered: null, deaths: null };
 
-            for (const data of responseData) {
-                stats.critical = criticalSum += data.confirmed;
-                stats.recovered = recoveredSum += data.recovered;
-                stats.deaths = deathSum += data.deaths;
+                let criticalSum = 0;
+                let recoveredSum = 0;
+                let deathSum = 0;
+
+                for (const data of responseData) {
+                    stats.critical = criticalSum += data.confirmed;
+                    stats.recovered = recoveredSum += data.recovered;
+                    stats.deaths = deathSum += data.deaths;
+                }
+                setData(stats);
+            } catch (error) {
+                alert(error.message);
             }
-            setData(stats);
         };
 
         fetchDataHandler();
