@@ -3,19 +3,22 @@ import DashboardHeader from './DashboardHeader';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import api from '../../utilities/axios-hook';
+import Loading from '../../UI/Loading';
 
 const Dashboard = () => {
     const { t } = useTranslation();
     const [data, setData] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const fetchDataHandler = async () => {
             try {
+                setIsLoading(true);
                 const response = await api.get('/statistics');
 
                 const responseData = response.data;
-                const stats = { critical: null, recovered: null, deaths: null };
 
+                const stats = { critical: null, recovered: null, deaths: null };
                 let criticalSum = 0;
                 let recoveredSum = 0;
                 let deathSum = 0;
@@ -26,7 +29,10 @@ const Dashboard = () => {
                     stats.deaths = deathSum += data.deaths;
                 }
                 setData(stats);
+
+                setIsLoading(false);
             } catch (error) {
+                setIsLoading(false);
                 alert(error.message);
             }
         };
@@ -66,76 +72,80 @@ const Dashboard = () => {
                         </nav>
                     </div>
                     <div>
-                        <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
-                            <div className="bg-brand-primary bg-opacity-7 rounded-xl md:col-span-1 col-span-full">
-                                <div className="px-10 py-12 flex flex-col justify-center items-center space-y-6">
-                                    <div className="mb-4">
-                                        <img
-                                            src={require('../../assets/img/vectors/Blue vector.png')}
-                                            alt="blueVector"
-                                        />
-                                    </div>
+                        {isLoading ? (
+                            <Loading />
+                        ) : (
+                            <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+                                <div className="bg-brand-primary bg-opacity-7 rounded-xl md:col-span-1 col-span-full">
+                                    <div className="px-10 py-12 flex flex-col justify-center items-center space-y-6">
+                                        <div className="mb-4">
+                                            <img
+                                                src={require('../../assets/img/vectors/Blue vector.png')}
+                                                alt="blueVector"
+                                            />
+                                        </div>
 
-                                    <div>
-                                        <h3 className="text-black text-xl">
-                                            {t('New cases')}
-                                        </h3>
-                                    </div>
+                                        <div>
+                                            <h3 className="text-black text-xl">
+                                                {t('New cases')}
+                                            </h3>
+                                        </div>
 
-                                    <div>
-                                        <h1 className="text-brand-primary font-black text-4xl">
-                                            {data.critical}
-                                        </h1>
+                                        <div>
+                                            <h1 className="text-brand-primary font-black text-4xl">
+                                                {data.critical}
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-brand-secondary bg-opacity-7 rounded-xl">
+                                    <div className="px-10 py-12 flex flex-col justify-center items-center space-y-6">
+                                        <div className="mb-6 mt-4">
+                                            <img
+                                                src={require('../../assets/img/vectors/Green vector.png')}
+                                                alt="greenVector"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <h3 className="text-black text-xl">
+                                                {t('Recovered')}
+                                            </h3>
+                                        </div>
+
+                                        <div>
+                                            <h1 className="text-brand-secondary font-black text-4xl">
+                                                {data.recovered}
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className=" bg-brand-tertiary bg-opacity-7 rounded-xl">
+                                    <div className="px-10 py-12 flex flex-col justify-center items-center space-y-6">
+                                        <div className="mb-4 mt-3">
+                                            <img
+                                                src={require('../../assets/img/vectors/Yellow vector.png')}
+                                                alt="yellowVector"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <h3 className="text-black text-xl">
+                                                {t('Deaths')}
+                                            </h3>
+                                        </div>
+
+                                        <div>
+                                            <h1 className="text-brand-tertiary font-black text-4xl">
+                                                {data.deaths}
+                                            </h1>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="bg-brand-secondary bg-opacity-7 rounded-xl">
-                                <div className="px-10 py-12 flex flex-col justify-center items-center space-y-6">
-                                    <div className="mb-6 mt-4">
-                                        <img
-                                            src={require('../../assets/img/vectors/Green vector.png')}
-                                            alt="greenVector"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <h3 className="text-black text-xl">
-                                            {t('Recovered')}
-                                        </h3>
-                                    </div>
-
-                                    <div>
-                                        <h1 className="text-brand-secondary font-black text-4xl">
-                                            {data.recovered}
-                                        </h1>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className=" bg-brand-tertiary bg-opacity-7 rounded-xl">
-                                <div className="px-10 py-12 flex flex-col justify-center items-center space-y-6">
-                                    <div className="mb-4 mt-3">
-                                        <img
-                                            src={require('../../assets/img/vectors/Yellow vector.png')}
-                                            alt="yellowVector"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <h3 className="text-black text-xl">
-                                            {t('Deaths')}
-                                        </h3>
-                                    </div>
-
-                                    <div>
-                                        <h1 className="text-brand-tertiary font-black text-4xl">
-                                            {data.deaths}
-                                        </h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </section>
             </div>
