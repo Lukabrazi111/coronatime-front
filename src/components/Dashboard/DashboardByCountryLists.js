@@ -7,6 +7,7 @@ const DashboardByCountryLists = () => {
     const { t } = useTranslation();
     const langCtx = useContext(LanguageContext);
     const [data, setData] = useState([]);
+    const [order, setOrder] = useState('asc');
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -22,6 +23,23 @@ const DashboardByCountryLists = () => {
         fetchDataHandler();
     }, []);
 
+    const sortBy = (column) => {
+        if (order === 'asc') {
+            const sorted = [...data].sort((a, b) =>
+                a[column] > b[column] ? 1 : -1
+            );
+            setData(sorted);
+            setOrder('desc');
+        }
+
+        if (order === 'desc') {
+            const sorted = [...data].sort((a, b) =>
+                a[column] < b[column] ? 1 : -1
+            );
+            setData(sorted);
+            setOrder('asc');
+        }
+    };
 
     return (
         <div>
@@ -52,7 +70,7 @@ const DashboardByCountryLists = () => {
                             <th className="md:w-64 md:p-5 py-5 text-xs text-black md:rounded-tl-lg">
                                 <div className="flex inline-block gap-2">
                                     {t('Location')}
-                                    <div className="flex inline-flex flex-col items-center">
+                                    <div onClick={() => sortBy('name')} className="flex inline-flex flex-col items-center">
                                         <button>
                                             <img
                                                 className="mb-1"
@@ -73,7 +91,7 @@ const DashboardByCountryLists = () => {
                             <th className="md:w-64 text-xs text-black">
                                 <div className="md:flex inline-block md:gap-2 break-all">
                                     {t('New cases')}
-                                    <div className="md:flex inline-flex flex-col items-center">
+                                    <div onClick={() => sortBy('confirmed')} className="md:flex inline-flex flex-col items-center">
                                         <button>
                                             <img
                                                 className="mb-1"
@@ -92,7 +110,7 @@ const DashboardByCountryLists = () => {
                                 </div>
                             </th>
                             <th className="md:w-64 text-xs text-black">
-                                <div className="md:flex inline-block md:gap-2 break-all">
+                                <div onClick={() => sortBy('deaths')} className="md:flex inline-block md:gap-2 break-all">
                                     {t('Deaths')}
                                     <div className="md:flex inline-flex flex-col items-center">
                                         <button>
@@ -113,7 +131,7 @@ const DashboardByCountryLists = () => {
                                 </div>
                             </th>
                             <th className="md:w-64 text-xs text-black">
-                                <div className="md:flex inline-block md:gap-2 break-all">
+                                <div onClick={() => sortBy('recovered')} className="md:flex inline-block md:gap-2 break-all">
                                     {t('Recovered')}
                                     <div className="md:flex inline-flex flex-col items-center">
                                         <button>
