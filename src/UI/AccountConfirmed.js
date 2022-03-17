@@ -15,7 +15,7 @@ const AccountConfirmed = () => {
         };
 
         confirmAccount();
-    }, []);
+    }, [token]);
 
     return (
         <Layout>

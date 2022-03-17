@@ -9,6 +9,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import DashboardByCountry from './components/Dashboard/DashboardByCountry';
 import ResetPassword from './components/AuthPages/ResetPassword/ResetPassword';
 import AccountConfirmed from './UI/AccountConfirmed';
+import PasswordChanged from './UI/PasswordChanged';
 
 function App() {
     return (
@@ -34,6 +35,10 @@ function App() {
                     <Route
                         path={'/user/verify/:token'}
                         element={<AccountConfirmed />}
+                    />
+                    <Route
+                        path={'/password-changed'}
+                        element={<PasswordChanged />}
                     />
                     <Route path={'*'} element={<NotFound />} />
                 </Routes>

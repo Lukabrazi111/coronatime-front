@@ -55,7 +55,7 @@ const ResetPasswordForm = () => {
                 }, 3400);
                 return () => clearTimeout(timer);
             }
-            redirect('/login');
+            redirect('/password-changed');
         } catch (error) {
             alert(error.message);
         }
