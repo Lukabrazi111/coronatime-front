@@ -7,6 +7,7 @@ import ForgotPassword from './components/AuthPages/ForgotPassword/ForgotPassword
 import NotFound from './components/Error/NotFound';
 import Dashboard from './components/Dashboard/Dashboard';
 import DashboardByCountry from './components/Dashboard/DashboardByCountry';
+import ResetPassword from './components/AuthPages/ResetPassword/ResetPassword';
 
 function App() {
     return (
@@ -19,6 +20,10 @@ function App() {
                     <Route
                         path={'/forgot-password'}
                         element={<ForgotPassword />}
+                    />
+                    <Route
+                        path={'/reset-password/:token'}
+                        element={<ResetPassword />}
                     />
                     <Route path={'/dashboard'} element={<Dashboard />} />
                     <Route
