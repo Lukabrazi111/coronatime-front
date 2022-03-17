@@ -8,6 +8,7 @@ import NotFound from './components/Error/NotFound';
 import Dashboard from './components/Dashboard/Dashboard';
 import DashboardByCountry from './components/Dashboard/DashboardByCountry';
 import ResetPassword from './components/AuthPages/ResetPassword/ResetPassword';
+import AccountConfirmed from './UI/AccountConfirmed';
 
 function App() {
     return (
@@ -29,6 +30,10 @@ function App() {
                     <Route
                         path={'/dashboard-by-country'}
                         element={<DashboardByCountry />}
+                    />
+                    <Route
+                        path={'/user/verify/:token'}
+                        element={<AccountConfirmed />}
                     />
                     <Route path={'*'} element={<NotFound />} />
                 </Routes>
