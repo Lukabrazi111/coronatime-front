@@ -5,7 +5,7 @@ import RegisterForm from './RegisterForm';
 
 const Register = () => {
     const { t } = useTranslation();
-    
+
     return (
         <React.Fragment>
             <Layout>
@@ -36,17 +36,6 @@ const Register = () => {
                             alt="capsuleImg"
                         />
                     </div>
-
-                    {/*@if (session()->has('success_message'))*/}
-                    {/*<div className="animate-pulse fixed bottom-8 left-4 bg-success px-5 py-3 rounded-xl">*/}
-                    {/*    <span className="text-white">success_message</span>*/}
-                    {/*</div>*/}
-                    {/*@endif*/}
-                    {/*@if (session()->has('error_message'))*/}
-                    {/*<div className="animate-pulse fixed bottom-8 left-4 bg-red-500 px-5 py-3 rounded-xl">*/}
-                    {/*    <span className="text-white">error_message</span>*/}
-                    {/*</div>*/}
-                    {/*@endif*/}
                 </main>
             </Layout>
         </React.Fragment>
