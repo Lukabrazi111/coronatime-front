@@ -11,7 +11,7 @@ const AccountConfirmed = () => {
 
     useEffect(() => {
         const confirmAccount = async () => {
-            await api.get(`/user/verify/${token}`);
+            await api.get(`/verify-user/${token}`);
         };
 
         confirmAccount();
