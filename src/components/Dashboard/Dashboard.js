@@ -1,38 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import DashboardHeader from './DashboardHeader';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import api from '../../utilities/axios-hook';
 import Loading from '../../UI/Loading';
+import AuthContext from '../../context/auth-context';
 
 const Dashboard = () => {
     const { t } = useTranslation();
     const [data, setData] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const authCtx = useContext(AuthContext);
 
     useEffect(() => {
         setIsLoading(true);
         const fetchDataHandler = async () => {
             try {
-                const response = await api.get('/statistics');
+                const response = await api.get('/summarized-statistics', {
+                    headers: {
+                        Authorization: `Bearer ${authCtx.token}`,
+                    },
+                });
 
                 const responseData = response.data;
 
-                const stats = { critical: null, recovered: null, deaths: null };
-                let criticalSum = 0;
-                let recoveredSum = 0;
-                let deathSum = 0;
-
-                for (const data of responseData) {
-                    stats.critical = criticalSum += data.confirmed;
-                    stats.recovered = recoveredSum += data.recovered;
-                    stats.deaths = deathSum += data.deaths;
-                }
-
                 setData({
-                    critical: criticalSum.toLocaleString(),
-                    recovered: recoveredSum.toLocaleString(),
-                    deaths: deathSum.toLocaleString(),
+                    confirmed: responseData.confirmed.toLocaleString(),
+                    recovered: responseData.recovered.toLocaleString(),
+                    deaths: responseData.deaths.toLocaleString(),
                 });
 
                 setIsLoading(false);
@@ -98,7 +93,7 @@ const Dashboard = () => {
 
                                         <div>
                                             <h1 className="text-brand-primary font-black text-4xl">
-                                                {data.critical}
+                                                {data.confirmed}
                                             </h1>
                                         </div>
                                     </div>

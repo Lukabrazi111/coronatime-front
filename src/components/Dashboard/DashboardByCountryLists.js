@@ -3,10 +3,12 @@ import { useTranslation } from 'react-i18next';
 import api from '../../utilities/axios-hook';
 import LanguageContext from '../../context/language-context';
 import Loading from '../../UI/Loading';
+import AuthContext from '../../context/auth-context';
 
 const DashboardByCountryLists = () => {
     const { t } = useTranslation();
     const langCtx = useContext(LanguageContext);
+    const authCtx = useContext(AuthContext);
     const [data, setData] = useState([]);
     const [order, setOrder] = useState('asc');
     const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +18,11 @@ const DashboardByCountryLists = () => {
         setIsLoading(true);
         const fetchDataHandler = async () => {
             try {
-                const response = await api.get('/get-all-statistics');
+                const response = await api.get('/statistics', {
+                    headers: {
+                        Authorization: `Bearer ${authCtx.token}`,
+                    },
+                });
                 const responseData = await response.data;
                 setData(responseData);
                 setIsLoading(false);

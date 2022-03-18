@@ -30,7 +30,12 @@ const LoginForm = () => {
         try {
             setIsLoading(true);
             await axios.get('http://localhost:8000/sanctum/csrf-cookie');
-            const response = await api.post('/login', data);
+            const response = await api.post('/login', data, {
+                headers: {
+                    Accept: 'application/json',
+                    Authorization: `Bearer ${authCtx.token}`,
+                },
+            });
             const responseData = await response.data;
             const user = response.data.username;
 
