@@ -25,9 +25,9 @@ const Dashboard = () => {
                 const responseData = response.data;
 
                 setData({
-                    confirmed: responseData.confirmed.toLocaleString(),
-                    recovered: responseData.recovered.toLocaleString(),
-                    deaths: responseData.deaths.toLocaleString(),
+                    confirmed: responseData.confirmed,
+                    recovered: responseData.recovered,
+                    deaths: responseData.deaths,
                 });
 
                 setIsLoading(false);

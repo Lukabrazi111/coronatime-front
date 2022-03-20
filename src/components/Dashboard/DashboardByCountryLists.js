@@ -36,17 +36,13 @@ const DashboardByCountryLists = () => {
 
     const sortBy = (column) => {
         if (order === 'asc') {
-            const sorted = []
-                .concat(data)
-                .sort((a, b) => (a[column] > b[column] ? 1 : -1));
+            let sorted = data.sort((a, b) => (a[column] > b[column] ? 1 : -1));
             setData(sorted);
             setOrder('desc');
         }
 
         if (order === 'desc') {
-            const sorted = []
-                .concat(data)
-                .sort((a, b) => (a[column] < b[column] ? 1 : -1));
+            let sorted = data.sort((a, b) => (a[column] < b[column] ? 1 : -1));
             setData(sorted);
             setOrder('asc');
         }
@@ -75,7 +71,7 @@ const DashboardByCountryLists = () => {
                 </div>
             </div>
 
-            <div className="overflow-scroll h-125 relative h-max">
+            <div className="overflow-scroll h-96 relative h-max">
                 {isLoading ? (
                     <Loading />
                 ) : (

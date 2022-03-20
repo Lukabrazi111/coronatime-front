@@ -197,7 +197,7 @@ const RegisterForm = () => {
                 </div>
 
                 <div className="flex flex-col relative">
-                    <label htmlFor="password_confirmation" className="mb-2">
+                    <label htmlFor="repeatPassword" className="mb-2">
                         {t('Repeat password')}
                     </label>
                     <input
