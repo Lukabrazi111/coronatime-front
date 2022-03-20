@@ -29,7 +29,9 @@ const LoginForm = () => {
     const submitFormHandler = async (data) => {
         try {
             setIsLoading(true);
-            await axios.get('http://localhost:8000/sanctum/csrf-cookie');
+            await axios.get(
+                'http://coronatime-api.lukabrazi.redberryinternship.ge/sanctum/csrf-cookie'
+            );
             const response = await api.post('/login', data, {
                 headers: {
                     Accept: 'application/json',
