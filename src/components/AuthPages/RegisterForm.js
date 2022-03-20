@@ -50,7 +50,7 @@ const RegisterForm = () => {
             }
         } catch (error) {
             setIsLoading(false);
-            const errorHandler = error.response.data.errors;
+            let errorHandler = error.response.data.errors;
             if (errorHandler.username) {
                 setNotification({
                     color: 'bg-red-600',
