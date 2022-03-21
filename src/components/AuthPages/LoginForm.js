@@ -30,7 +30,7 @@ const LoginForm = () => {
         try {
             setIsLoading(true);
             await axios.get(
-                'http://coronatime-api.lukabrazi.redberryinternship.ge/sanctum/csrf-cookie'
+                'https://coronatime-api.lukabrazi.redberryinternship.ge/sanctum/csrf-cookie'
             );
             const response = await api.post('/login', data, {
                 headers: {
