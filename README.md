@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+[comment]: <> (<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[comment]: <> (<p align="center">)
 
-## Available Scripts
+[comment]: <> (<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>)
 
-In the project directory, you can run:
+[comment]: <> (<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>)
 
-### `npm start`
+[comment]: <> (<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[comment]: <> (<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[comment]: <> (</p>)
 
-### `npm test`
+## Coronatime Front
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This is an app corona statistics, where you can see how many corona infected on earth.
+The page has multi language functionality these languages are:
 
-### `npm run build`
+- English
+- Georgian
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+and also you can register and freely view the statistics.
+### Built with:
+- [React](https://reactjs.org/)
+- [axios](https://github.com/axios/axios)
+- [useForm](https://react-hook-form.com/api/useform/)
+- [i18next](https://react.i18next.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites:
+- React 17.0.2
+- NPM 8.1.0
+## Getting Started
+1. clone Coronatime Front repository from github:
+```
+https://github.com/RedberryInternship/lukabrazi-coronatime-front
+```
+2. Next step requires you to run **npm install** in order to install all dependencies:
+```
+npm install
+```
+3. Now we need to build our project:
+```
+npm run build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. After all commands above you should run localhost server:
+```
+npm start
+```
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Database Diagram
+- **[Diagram](https://drawsql.app/redberry-15/diagrams/coronatime)**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Security Vulnerabilities
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+If you discover a security vulnerability within Coronatime Front App, please send an e-mail to Luka Khangoshvili via [lukabrazi@redberry.ge](mailto:lukabrazi@redberry.ge). All security vulnerabilities will be promptly addressed.
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The Coronatime Front is open-sourced web app.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[https://coronatime.lukabrazi.redberryinternship.ge](https://coronatime.lukabrazi.redberryinternship.ge/login)
