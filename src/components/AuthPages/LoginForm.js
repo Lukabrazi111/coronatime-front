@@ -34,7 +34,6 @@ const LoginForm = () => {
             );
             const response = await api.post('/login', data, {
                 headers: {
-                    Accept: 'application/json',
                     Authorization: `Bearer ${authCtx.token}`,
                 },
             });
