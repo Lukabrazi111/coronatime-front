@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Login from './components/AuthPages/Login';
 import Register from './components/AuthPages/Register';
-import { LanguageProvider } from './context/language-context';
+import { LanguageProvider } from 'context/language-context';
 import ForgotPassword from './components/AuthPages/ForgotPassword/ForgotPassword';
 import NotFound from './components/Error/NotFound';
 import Dashboard from './components/Dashboard/Dashboard';

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import LanguageContext from '../context/language-context';
+import LanguageContext from 'context/language-context';
 
 const Layout = (props) => {
     const [isOpen, setIsOpen] = useState(false);

@@ -1,6 +1,6 @@
 import React from "react";
 import ForgotPasswordForm from "./ForgotPasswordForm";
-import Layout from "../../Layout";
+import Layout from "components/Layout";
 import {useTranslation} from "react-i18next";
 
 const ForgotPassword = () => {

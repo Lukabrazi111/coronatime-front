@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import api from '../../utilities/axios-hook';
-import LanguageContext from '../../context/language-context';
-import Loading from '../../UI/Loading';
-import AuthContext from '../../context/auth-context';
+import api from 'utilities/axios-hook';
+import LanguageContext from 'context/language-context';
+import Loading from 'UI/Loading';
+import AuthContext from 'context/auth-context';
 
 const DashboardByCountryLists = () => {
     const { t } = useTranslation();

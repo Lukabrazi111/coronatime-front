@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Layout from '../Layout';
+import Layout from 'components/Layout';
 import RegisterForm from './RegisterForm';
 
 const Register = () => {

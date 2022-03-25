@@ -1,7 +1,7 @@
 import React from 'react';
 
 import LoginForm from './LoginForm';
-import Layout from '../Layout';
+import Layout from 'components/Layout';
 import { useTranslation } from 'react-i18next';
 
 const Login = () => {
