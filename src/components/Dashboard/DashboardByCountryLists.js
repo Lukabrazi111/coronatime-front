@@ -9,10 +9,21 @@ const DashboardByCountryLists = () => {
     const { t } = useTranslation();
     const langCtx = useContext(LanguageContext);
     const authCtx = useContext(AuthContext);
-    const [data, setData] = useState([]);
     const [order, setOrder] = useState('asc');
+    const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [search, setSearch] = useState('');
+
+    const sortBy = (column) => {
+        if (order === 'asc') {
+            setData([].concat(data).sort((a, b) => a[column] - b[column]));
+            setOrder('desc');
+        }
+        if (order === 'desc') {
+            setData([].concat(data).sort((a, b) => b[column] - a[column]));
+            setOrder('asc');
+        }
+    };
 
     useEffect(() => {
         setIsLoading(true);
@@ -33,20 +44,6 @@ const DashboardByCountryLists = () => {
         };
         fetchDataHandler();
     }, []);
-
-    const sortBy = (column) => {
-        if (order === 'asc') {
-            let sorted = data.sort((a, b) => (a[column] > b[column] ? 1 : -1));
-            setData(sorted);
-            setOrder('desc');
-        }
-
-        if (order === 'desc') {
-            let sorted = data.sort((a, b) => (a[column] < b[column] ? 1 : -1));
-            setData(sorted);
-            setOrder('asc');
-        }
-    };
 
     return (
         <div>
@@ -71,7 +68,7 @@ const DashboardByCountryLists = () => {
                 </div>
             </div>
 
-            <div className="overflow-scroll h-96 relative h-max">
+            <div className="overflow-auto h-96 relative h-max">
                 {isLoading ? (
                     <Loading />
                 ) : (
@@ -81,25 +78,6 @@ const DashboardByCountryLists = () => {
                                 <th className="md:w-64 md:p-5 py-5 text-xs text-black md:rounded-tl-lg">
                                     <div className="flex inline-block gap-2">
                                         {t('Location')}
-                                        <div
-                                            onClick={() => sortBy('name')}
-                                            className="flex inline-flex flex-col items-center"
-                                        >
-                                            <button>
-                                                <img
-                                                    className="mb-1"
-                                                    src={require('../../assets/img/arrow-up.png')}
-                                                    alt="arrowUp"
-                                                />
-                                            </button>
-                                            <button>
-                                                <img
-                                                    className="text-black"
-                                                    src={require('../../assets/img/black-arrow.png')}
-                                                    alt="blackArrow"
-                                                />
-                                            </button>
-                                        </div>
                                     </div>
                                 </th>
                                 <th className="md:w-64 text-xs text-black">
