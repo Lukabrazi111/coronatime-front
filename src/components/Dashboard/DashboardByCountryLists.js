@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import api from 'utilities/axios-hook';
 import LanguageContext from 'context/language-context';
@@ -85,7 +85,7 @@ const DashboardByCountryLists = () => {
                         <thead className="bg-gray-200">
                             <tr>
                                 <th className="md:w-64 md:p-5 py-5 text-xs text-black md:rounded-tl-lg">
-                                    <div className="flex inline-block gap-2">
+                                    <div className="flex gap-2">
                                         {t('Location')}
                                     </div>
                                 </th>

@@ -12,53 +12,84 @@
 
 [comment]: <> (</p>)
 
-## Coronatime Front
+## Coronatime App Front
 
-This is an app corona statistics, where you can see how many corona infected on earth.
-The page has multi language functionality these languages are:
+---
 
-- English
-- Georgian
+This is corona statistics app where you can see how many corona infected on earth.
+The page has multi language functionality, also person **_must register_** to track the result of infected people.
 
-and also you can register and freely view the statistics.
-### Built with:
-- [React](https://reactjs.org/)
-- [axios](https://github.com/axios/axios)
-- [useForm](https://react-hook-form.com/api/useform/)
-- [i18next](https://react.i18next.com/)
+#
+
+### Table of Contents
+
+-   [Prerequisites](#prerequisites)
+-   [Tech Stack](#tech-stack)
+-   [Getting Started](#getting-started)
+-   [Database Diagram](#database-diagram)
+-   [Security Vulnerabilities](#security-vulnerabilities)
+-   [Website](#website)
+
+#
 
 ### Prerequisites:
-- React 17.0.2
-- NPM 8.1.0
+
+-   React 17.0.2
+-   NPM 8.1.0
+-   NODEJS 16.13.0
+
+#
+
+### Tech Stack:
+
+-   [React](https://reactjs.org/)
+-   [axios](https://github.com/axios/axios)
+-   [useForm](https://react-hook-form.com/api/useform/)
+-   [i18next](https://react.i18next.com/)
+
+#
+
 ## Getting Started
+
 1. clone Coronatime Front repository from github:
+
 ```
 https://github.com/RedberryInternship/lukabrazi-coronatime-front
 ```
+
 2. Next step requires you to run **npm install** in order to install all dependencies:
+
 ```
 npm install
 ```
+
 3. Now we need to build our project:
+
 ```
 npm run build
 ```
 
 4. After all commands above you should run localhost server:
+
 ```
 npm start
 ```
 
-
+#
 
 ## Database Diagram
-- **[Diagram](https://drawsql.app/redberry-15/diagrams/coronatime)**
+
+-   **[Diagram](https://drawsql.app/redberry-15/diagrams/coronatime)**
+
+#
 
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Coronatime Front App, please send an e-mail to Luka Khangoshvili via [lukabrazi@redberry.ge](mailto:lukabrazi@redberry.ge). All security vulnerabilities will be promptly addressed.
 
-## License
+#
+
+## Website
 
 The Coronatime Front is open-sourced web app.
 

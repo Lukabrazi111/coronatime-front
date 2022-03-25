@@ -108,7 +108,6 @@ const RegisterForm = () => {
                         className={`px-4 py-4 rounded-lg border ${
                             errors.username ? 'border-red-600' : null
                         } mb-1 placeholder-dark`}
-                        required
                         type="text"
                         name="username"
                         placeholder={t('Enter unique username or email')}
@@ -176,7 +175,6 @@ const RegisterForm = () => {
                         className={`px-4 py-4 rounded-lg border ${
                             errors.password && 'border-red-600'
                         } mb-1 placeholder-dark`}
-                        required
                         type="password"
                         name="password"
                         id="password"
@@ -224,7 +222,6 @@ const RegisterForm = () => {
                         className={`px-4 py-4 rounded-lg border ${
                             errors.repeatPassword && 'border-red-600'
                         } mb-1 placeholder-dark`}
-                        required
                         type="password"
                         name="repeatPassword"
                         placeholder={t('Repeat password')}
