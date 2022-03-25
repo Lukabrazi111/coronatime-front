@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import LanguageContext from 'context/language-context';
 import AuthContext from 'context/auth-context';
 import { useTranslation } from 'react-i18next';
+import LogoutModal from 'UI/LogoutModal';
 
 const DashboardHeader = (props) => {
     const { t } = useTranslation();
     const langCtx = useContext(LanguageContext);
     const [isOpen, setIsOpen] = useState(false);
+    const [logoutModal, setLogoutModal] = useState(false);
     const authCtx = useContext(AuthContext);
 
     useEffect(() => {
@@ -28,8 +30,45 @@ const DashboardHeader = (props) => {
         };
     }, []);
 
+    const logoutModalHandler = () => {
+        setLogoutModal(true);
+    };
+
+    const closeLogoutModalHandler = () => {
+        setLogoutModal(false);
+    }
+
     return (
         <React.Fragment>
+            {logoutModal && (
+                <LogoutModal onClose={closeLogoutModalHandler}>
+                    <div>
+                        <p className="text-white text-2xl font-bold text-center mb-10">
+                            Are you fkin sure you wanna go out?
+                        </p>
+                        <div className="flex items-center justify-end space-x-3">
+                            <button
+                                onClick={() => {
+                                    setLogoutModal(false);
+                                }}
+                                className="bg-red-500 px-4 py-2 rounded text-white items-center shadow-2xl"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={() => {
+                                    authCtx.logout();
+                                    localStorage.removeItem('user');
+                                    window.location.href = '/login';
+                                }}
+                                className="bg-green-500 px-4 py-2 rounded text-white items-center shadow-2xl"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </LogoutModal>
+            )}
             <div className="container mx-auto">
                 <header className="py-5 flex items-center justify-between px-4">
                     <div className="header__inner">
@@ -94,16 +133,12 @@ const DashboardHeader = (props) => {
                             <span className="border-r h-8 max-h-full"></span>
                         </div>
                         <div className="hidden md:block">
-                            <a
-                                onClick={() => {
-                                    localStorage.removeItem('user');
-                                    authCtx.logout();
-                                }}
-                                href="/login"
+                            <button
+                                onClick={logoutModalHandler}
                                 className="text-black"
                             >
                                 {t('Log Out')}
-                            </a>
+                            </button>
                         </div>
 
                         <div className="md:hidden block">

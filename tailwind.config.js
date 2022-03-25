@@ -13,6 +13,7 @@ module.exports = {
                 'brand-primary': '#2029F3',
                 'brand-secondary': '#0FBA68',
                 'brand-tertiary': '#EAD621',
+                backdrop: 'rgba(0,0,0,0.40)',
             },
             spacing: {
                 75: '24.5rem',
