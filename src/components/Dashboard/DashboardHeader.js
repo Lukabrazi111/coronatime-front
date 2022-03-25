@@ -74,7 +74,7 @@ const DashboardHeader = (props) => {
                     <div className="header__inner">
                         <Link to="/dashboard">
                             <img
-                                src={require('../../assets/img/Group 1.png')}
+                                src={require('assets/img/Group 1.png')}
                                 alt="coronaImg"
                             />
                         </Link>
@@ -93,7 +93,7 @@ const DashboardHeader = (props) => {
                                         <span>
                                             <img
                                                 className="ml-2"
-                                                src={require('../../assets/img/Stroke 165.png')}
+                                                src={require('assets/img/Stroke 165.png')}
                                                 alt="arrowDown"
                                             />
                                         </span>
@@ -144,7 +144,7 @@ const DashboardHeader = (props) => {
                         <div className="md:hidden block">
                             <a href="#" className="block p-3">
                                 <img
-                                    src={require('../../assets/img/vectors/Hamburger vector.png')}
+                                    src={require('assets/img/vectors/Hamburger vector.png')}
                                     alt=""
                                 />
                             </a>

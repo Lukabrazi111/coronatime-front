@@ -99,14 +99,14 @@ const DashboardByCountryLists = () => {
                                             <button>
                                                 <img
                                                     className="mb-1"
-                                                    src={require('../../assets/img/arrow-up.png')}
+                                                    src={require('assets/img/arrow-up.png')}
                                                     alt="arrowUp"
                                                 />
                                             </button>
                                             <button>
                                                 <img
                                                     className="text-black"
-                                                    src={require('../../assets/img/black-arrow.png')}
+                                                    src={require('assets/img/black-arrow.png')}
                                                     alt="blackArrow"
                                                 />
                                             </button>
@@ -123,14 +123,14 @@ const DashboardByCountryLists = () => {
                                             <button>
                                                 <img
                                                     className="mb-1"
-                                                    src={require('../../assets/img/arrow-up.png')}
+                                                    src={require('assets/img/arrow-up.png')}
                                                     alt="arrowUp"
                                                 />
                                             </button>
                                             <button>
                                                 <img
                                                     className="text-black"
-                                                    src={require('../../assets/img/black-arrow.png')}
+                                                    src={require('assets/img/black-arrow.png')}
                                                     alt="blackArrow"
                                                 />
                                             </button>
@@ -147,14 +147,14 @@ const DashboardByCountryLists = () => {
                                             <button>
                                                 <img
                                                     className="mb-1"
-                                                    src={require('../../assets/img/arrow-up.png')}
+                                                    src={require('assets/img/arrow-up.png')}
                                                     alt="arrowUp"
                                                 />
                                             </button>
                                             <button>
                                                 <img
                                                     className="text-black"
-                                                    src={require('../../assets/img/black-arrow.png')}
+                                                    src={require('assets/img/black-arrow.png')}
                                                     alt="blackArrow"
                                                 />
                                             </button>

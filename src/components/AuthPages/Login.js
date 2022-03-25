@@ -14,7 +14,7 @@ const Login = () => {
                     <div className="flex flex-col pt-10 px-4 w-full md:pl-32 md:w-7/12">
                         <div className="mb-12">
                             <img
-                                src={require('../../assets/img/Group 1.png')}
+                                src={require('assets/img/Group 1.png')}
                                 alt="coronaImg"
                             />
                         </div>
@@ -32,7 +32,7 @@ const Login = () => {
                     <div>
                         <img
                             className="h-screen md:block hidden"
-                            src={require('../../assets/img/Rectangle 1.png')}
+                            src={require('assets/img/Rectangle 1.png')}
                             alt="capsuleImg"
                         />
                     </div>

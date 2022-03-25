@@ -12,7 +12,7 @@ const ForgotPassword = () => {
                     <div className="mb-12 min-w-full flex flex-col justify-center items-center text-center">
                         <div className="mb-32">
                             <img
-                                src={require('../../../assets/img/Group 1.png')}
+                                src={require('assets/img/Group 1.png')}
                                 alt="coronaImg"
                             />
                         </div>

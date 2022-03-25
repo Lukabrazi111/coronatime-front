@@ -117,7 +117,7 @@ const RegisterForm = () => {
                     {errors.username && (
                         <img
                             className="mr-1 w-5 h-5"
-                            src={require('../../assets/img/validation/error-warning-fill.png')}
+                            src={require('assets/img/validation/error-warning-fill.png')}
                             alt="error"
                         />
                     )}
@@ -147,7 +147,7 @@ const RegisterForm = () => {
                         {errors.email && (
                             <img
                                 className="mr-1 w-5 h-5"
-                                src={require('../../assets/img/validation/error-warning-fill.png')}
+                                src={require('assets/img/validation/error-warning-fill.png')}
                                 alt="error"
                             />
                         )}
@@ -185,7 +185,7 @@ const RegisterForm = () => {
                         {errors.password && (
                             <img
                                 className="mr-1 w-5 h-5"
-                                src={require('../../assets/img/validation/error-warning-fill.png')}
+                                src={require('assets/img/validation/error-warning-fill.png')}
                                 alt="error"
                             />
                         )}
@@ -231,7 +231,7 @@ const RegisterForm = () => {
                         {errors.repeatPassword && (
                             <img
                                 className="mr-1 w-5 h-5"
-                                src={require('../../assets/img/validation/error-warning-fill.png')}
+                                src={require('assets/img/validation/error-warning-fill.png')}
                                 alt="error"
                             />
                         )}

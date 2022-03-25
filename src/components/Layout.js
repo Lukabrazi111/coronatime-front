@@ -37,7 +37,7 @@ const Layout = (props) => {
                             <span>
                                 <img
                                     className="ml-2"
-                                    src={require('../assets/img/Stroke 165.png')}
+                                    src={require('assets/img/Stroke 165.png')}
                                     alt="arrowDown"
                                 />
                             </span>

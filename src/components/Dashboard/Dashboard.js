@@ -80,7 +80,7 @@ const Dashboard = () => {
                                     <div className="px-10 py-12 flex flex-col justify-center items-center space-y-6">
                                         <div className="mb-4">
                                             <img
-                                                src={require('../../assets/img/vectors/Blue vector.png')}
+                                                src={require('assets/img/vectors/Blue vector.png')}
                                                 alt="blueVector"
                                             />
                                         </div>
@@ -103,7 +103,7 @@ const Dashboard = () => {
                                     <div className="px-10 py-12 flex flex-col justify-center items-center space-y-6">
                                         <div className="mb-6 mt-4">
                                             <img
-                                                src={require('../../assets/img/vectors/Green vector.png')}
+                                                src={require('assets/img/vectors/Green vector.png')}
                                                 alt="greenVector"
                                             />
                                         </div>
@@ -126,7 +126,7 @@ const Dashboard = () => {
                                     <div className="px-10 py-12 flex flex-col justify-center items-center space-y-6">
                                         <div className="mb-4 mt-3">
                                             <img
-                                                src={require('../../assets/img/vectors/Yellow vector.png')}
+                                                src={require('assets/img/vectors/Yellow vector.png')}
                                                 alt="yellowVector"
                                             />
                                         </div>
