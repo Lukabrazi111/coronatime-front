@@ -75,7 +75,13 @@ yarn
 npm run build
 ```
 
-4. After all commands above you should run localhost server:
+4. After build you need to go in your **root** folder and copy **_.env.example_** to .env to get a necessary variable:
+
+```
+cp .env.example .env
+```
+
+5. After all commands above you should run localhost server:
 
 ```
 npm start
