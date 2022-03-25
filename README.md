@@ -63,6 +63,12 @@ https://github.com/RedberryInternship/lukabrazi-coronatime-front
 npm install
 ```
 
+or
+
+```
+yarn
+```
+
 3. Now we need to build our project:
 
 ```
