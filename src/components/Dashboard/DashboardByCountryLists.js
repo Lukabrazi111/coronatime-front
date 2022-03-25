@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import api from 'utilities/axios-hook';
 import LanguageContext from 'context/language-context';
@@ -10,23 +10,14 @@ const DashboardByCountryLists = () => {
     const langCtx = useContext(LanguageContext);
     const authCtx = useContext(AuthContext);
     const [order, setOrder] = useState('asc');
-    const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [data, setData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
     const [search, setSearch] = useState('');
-
-    const sortBy = (column) => {
-        if (order === 'asc') {
-            setData([].concat(data).sort((a, b) => a[column] - b[column]));
-            setOrder('desc');
-        }
-        if (order === 'desc') {
-            setData([].concat(data).sort((a, b) => b[column] - a[column]));
-            setOrder('asc');
-        }
-    };
 
     useEffect(() => {
         setIsLoading(true);
+
         const fetchDataHandler = async () => {
             try {
                 const response = await api.get('/statistics', {
@@ -42,8 +33,26 @@ const DashboardByCountryLists = () => {
                 alert(error.message);
             }
         };
+
         fetchDataHandler();
     }, []);
+
+    useEffect(() => {
+        setFilteredData(
+            data.filter((value) => value.name.en.toLowerCase().includes(search))
+        );
+    }, [search, data]);
+
+    const sortBy = (column) => {
+        if (order === 'asc') {
+            setData([].concat(data).sort((a, b) => a[column] - b[column]));
+            setOrder('desc');
+        }
+        if (order === 'desc') {
+            setData([].concat(data).sort((a, b) => b[column] - a[column]));
+            setOrder('asc');
+        }
+    };
 
     return (
         <div>
@@ -58,7 +67,7 @@ const DashboardByCountryLists = () => {
                     </div>
                     <div className="ml-3 md:m-0">
                         <input
-                            onChange={(event) => setSearch(event.target.value)}
+                            onChange={(e) => setSearch(e.target.value)}
                             type="search"
                             id="search"
                             className="md:w-72 pl-14 rounded-lg outline-none focus:outline-none border border-gray-200 py-3"
@@ -68,7 +77,7 @@ const DashboardByCountryLists = () => {
                 </div>
             </div>
 
-            <div className="overflow-auto h-96 relative h-max">
+            <div className="overflow-auto relative h-125">
                 {isLoading ? (
                     <Loading />
                 ) : (
@@ -158,40 +167,28 @@ const DashboardByCountryLists = () => {
                         </thead>
 
                         <tbody className="bg-white divide-y divide-gray-200">
-                            {data
-                                .filter((value) => {
-                                    if (search === '') {
-                                        return value;
-                                    }
-                                    return value.name.en
-                                        .toLowerCase()
-                                        .includes(search);
-                                })
-                                .map((item) => (
-                                    <tr
-                                        key={item.id}
-                                        className="whitespace-nowrap"
-                                    >
-                                        <td className="md:p-5 text-sm pl-2 text-black">
-                                            {item.name[langCtx.lang]}
-                                        </td>
-                                        <td>
-                                            <div className="text-sm text-black">
-                                                {item.confirmed}
-                                            </div>
-                                        </td>
-                                        <td className="">
-                                            <div className="text-sm text-black">
-                                                {item.deaths}
-                                            </div>
-                                        </td>
-                                        <td className="py-4 text-sm text-black">
-                                            {item.recovered}
-                                        </td>
-                                        <td className="py-4"></td>
-                                        <td className="py-4"></td>
-                                    </tr>
-                                ))}
+                            {filteredData.map((item) => (
+                                <tr key={item.id} className="whitespace-nowrap">
+                                    <td className="md:p-5 text-sm pl-2 text-black">
+                                        {item.name[langCtx.lang]}
+                                    </td>
+                                    <td>
+                                        <div className="text-sm text-black">
+                                            {item.confirmed}
+                                        </div>
+                                    </td>
+                                    <td className="">
+                                        <div className="text-sm text-black">
+                                            {item.deaths}
+                                        </div>
+                                    </td>
+                                    <td className="py-4 text-sm text-black">
+                                        {item.recovered}
+                                    </td>
+                                    <td className="py-4"></td>
+                                    <td className="py-4"></td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 )}
