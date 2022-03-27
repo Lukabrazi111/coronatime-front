@@ -12,6 +12,7 @@ const DashboardByCountryLists = () => {
     const [order, setOrder] = useState('asc');
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState([]);
+    const [column, setColumn] = useState('');
     const [filteredData, setFilteredData] = useState([]);
     const [search, setSearch] = useState('');
 
@@ -44,6 +45,8 @@ const DashboardByCountryLists = () => {
     }, [search, data]);
 
     const sortBy = (column) => {
+        setColumn(column);
+
         if (order === 'asc') {
             setData([].concat(data).sort((a, b) => a[column] - b[column]));
             setOrder('desc');
@@ -61,7 +64,7 @@ const DashboardByCountryLists = () => {
                     <div>
                         <img
                             className="absolute top-2/4 left-5 transform -translate-y-1/2 text-center"
-                            src={require('../../assets/img/search.png')}
+                            src={require('assets/img/search.png')}
                             alt="search"
                         />
                     </div>
@@ -89,75 +92,150 @@ const DashboardByCountryLists = () => {
                                         {t('Location')}
                                     </div>
                                 </th>
-                                <th className="md:w-64 text-xs text-black">
-                                    <div className="md:flex inline-block md:gap-2 break-all">
+                                <th className="md:w-64 relative text-xs text-black">
+                                    <div className="md:flex absolute top-5 inline-block md:gap-2 break-all">
                                         {t('New cases')}
                                         <div
                                             onClick={() => sortBy('confirmed')}
                                             className="md:flex inline-flex flex-col items-center"
                                         >
-                                            <button>
-                                                <img
-                                                    className="mb-1"
-                                                    src={require('assets/img/arrow-up.png')}
-                                                    alt="arrowUp"
-                                                />
-                                            </button>
-                                            <button>
-                                                <img
-                                                    className="text-black"
-                                                    src={require('assets/img/black-arrow.png')}
-                                                    alt="blackArrow"
-                                                />
-                                            </button>
+                                            {order === 'asc' &&
+                                            column === 'confirmed' ? (
+                                                <button>
+                                                    <img
+                                                        className={
+                                                            'rotate-180 mb-1 w-2.5'
+                                                        }
+                                                        src={require('assets/img/black-arrow.png')}
+                                                        alt="blackArrow"
+                                                    />
+                                                </button>
+                                            ) : (
+                                                <button>
+                                                    <img
+                                                        className="mb-1 w-2.5"
+                                                        src={require('assets/img/arrow-up.png')}
+                                                        alt="arrowUp"
+                                                    />
+                                                </button>
+                                            )}
+
+                                            {order === 'desc' &&
+                                            column === 'confirmed' ? (
+                                                <button>
+                                                    <img
+                                                        className="w-2.5"
+                                                        src={require('assets/img/black-arrow.png')}
+                                                        alt="blackArrow"
+                                                    />
+                                                </button>
+                                            ) : (
+                                                <button>
+                                                    <img
+                                                        className="mb-1 w-2.5 rotate-180"
+                                                        src={require('assets/img/arrow-up.png')}
+                                                        alt="arrowUp"
+                                                    />
+                                                </button>
+                                            )}
                                         </div>
                                     </div>
                                 </th>
-                                <th className="md:w-64 text-xs text-black">
+                                <th className="md:w-64 relative text-xs text-black">
                                     <div
                                         onClick={() => sortBy('deaths')}
-                                        className="md:flex inline-block md:gap-2 break-all"
+                                        className="md:flex absolute top-5 inline-block md:gap-2 break-all"
                                     >
                                         {t('Deaths')}
                                         <div className="md:flex inline-flex flex-col items-center">
-                                            <button>
-                                                <img
-                                                    className="mb-1"
-                                                    src={require('assets/img/arrow-up.png')}
-                                                    alt="arrowUp"
-                                                />
-                                            </button>
-                                            <button>
-                                                <img
-                                                    className="text-black"
-                                                    src={require('assets/img/black-arrow.png')}
-                                                    alt="blackArrow"
-                                                />
-                                            </button>
+                                            {order === 'asc' &&
+                                            column === 'deaths' ? (
+                                                <button>
+                                                    <img
+                                                        className={
+                                                            'rotate-180 mb-1 w-2.5'
+                                                        }
+                                                        src={require('assets/img/black-arrow.png')}
+                                                        alt="blackArrow"
+                                                    />
+                                                </button>
+                                            ) : (
+                                                <button>
+                                                    <img
+                                                        className="mb-1 w-2.5"
+                                                        src={require('assets/img/arrow-up.png')}
+                                                        alt="arrowUp"
+                                                    />
+                                                </button>
+                                            )}
+
+                                            {order === 'desc' &&
+                                            column === 'deaths' ? (
+                                                <button>
+                                                    <img
+                                                        className="w-2.5"
+                                                        src={require('assets/img/black-arrow.png')}
+                                                        alt="blackArrow"
+                                                    />
+                                                </button>
+                                            ) : (
+                                                <button>
+                                                    <img
+                                                        className="mb-1 w-2.5 rotate-180"
+                                                        src={require('assets/img/arrow-up.png')}
+                                                        alt="arrowUp"
+                                                    />
+                                                </button>
+                                            )}
                                         </div>
                                     </div>
                                 </th>
-                                <th className="md:w-64 text-xs text-black">
+                                <th className="md:w-64 relative text-xs text-black">
                                     <div
                                         onClick={() => sortBy('recovered')}
-                                        className="md:flex inline-block md:gap-2 break-all"
+                                        className="md:flex absolute top-5 inline-block md:gap-2 break-all"
                                     >
                                         {t('Recovered')}
                                         <div className="md:flex inline-flex flex-col items-center">
-                                            <button>
-                                                <img
-                                                    className="mb-1"
-                                                    src={require('assets/img/arrow-up.png')}
-                                                    alt="arrowUp"
-                                                />
-                                            </button>
-                                            <button>
-                                                <img
-                                                    className="text-black"
-                                                    src={require('assets/img/black-arrow.png')}
-                                                    alt="blackArrow"
-                                                />
-                                            </button>
+                                            {order === 'asc' &&
+                                            column === 'recovered' ? (
+                                                <button>
+                                                    <img
+                                                        className={
+                                                            'rotate-180 mb-1 w-2.5'
+                                                        }
+                                                        src={require('assets/img/black-arrow.png')}
+                                                        alt="blackArrow"
+                                                    />
+                                                </button>
+                                            ) : (
+                                                <button>
+                                                    <img
+                                                        className="mb-1 w-2.5"
+                                                        src={require('assets/img/arrow-up.png')}
+                                                        alt="arrowUp"
+                                                    />
+                                                </button>
+                                            )}
+
+                                            {order === 'desc' &&
+                                            column === 'recovered' ? (
+                                                <button>
+                                                    <img
+                                                        className="w-2.5"
+                                                        src={require('assets/img/black-arrow.png')}
+                                                        alt="blackArrow"
+                                                    />
+                                                </button>
+                                            ) : (
+                                                <button>
+                                                    <img
+                                                        className="mb-1 w-2.5 rotate-180"
+                                                        src={require('assets/img/arrow-up.png')}
+                                                        alt="arrowUp"
+                                                    />
+                                                </button>
+                                            )}
                                         </div>
                                     </div>
                                 </th>

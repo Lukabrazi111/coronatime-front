@@ -39,7 +39,6 @@ const Dashboard = () => {
 
         fetchDataHandler();
     }, []);
-
     return (
         <DashboardHeader>
             <div className="container mx-auto">

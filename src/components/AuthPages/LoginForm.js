@@ -127,7 +127,7 @@ const LoginForm = () => {
                     {errors.password && (
                         <img
                             className="mr-1 w-5 h-5"
-                            src={require('../../assets/img/validation/error-warning-fill.png')}
+                            src={require('assets/img/validation/error-warning-fill.png')}
                             alt="error"
                         />
                     )}

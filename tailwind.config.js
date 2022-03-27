@@ -16,6 +16,7 @@ module.exports = {
                 backdrop: 'rgba(0,0,0,0.40)',
             },
             spacing: {
+                2.5: '10px',
                 75: '24.5rem',
                 125: '45rem',
             },
