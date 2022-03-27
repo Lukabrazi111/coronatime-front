@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import DashboardHeader from './DashboardHeader';
+import DashboardHeader from './components/DashboardHeader';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import api from 'utilities/axios-hook';

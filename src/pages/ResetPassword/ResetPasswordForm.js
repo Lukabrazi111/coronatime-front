@@ -103,7 +103,7 @@ const ResetPasswordForm = () => {
                     <span className="text-sm text-red-600 flex mb-2 mt-1">
                         <img
                             className="mr-1 w-5 h-5"
-                            src={require('../../../assets/img/validation/error-warning-fill.png')}
+                            src={require('assets/img/validation/error-warning-fill.png')}
                             alt="error"
                         />
                         {errors.password?.message}
@@ -150,7 +150,7 @@ const ResetPasswordForm = () => {
                     {errors.repeat_password && (
                         <img
                             className="mr-1 w-5 h-5"
-                            src={require('../../../assets/img/validation/error-warning-fill.png')}
+                            src={require('assets/img/validation/error-warning-fill.png')}
                             alt="error"
                         />
                     )}

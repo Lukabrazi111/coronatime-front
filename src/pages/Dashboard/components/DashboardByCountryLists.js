@@ -93,12 +93,12 @@ const DashboardByCountryLists = () => {
                                     </div>
                                 </th>
                                 <th className="md:w-64 relative text-xs text-black">
-                                    <div className="md:flex absolute top-5 inline-block md:gap-2 break-all">
+                                    <div
+                                        onClick={() => sortBy('confirmed')}
+                                        className="md:flex absolute top-5 inline-block md:gap-2 break-all"
+                                    >
                                         {t('New cases')}
-                                        <div
-                                            onClick={() => sortBy('confirmed')}
-                                            className="md:flex inline-flex flex-col items-center"
-                                        >
+                                        <div className="md:flex inline-flex flex-col items-center">
                                             {order === 'asc' &&
                                             column === 'confirmed' ? (
                                                 <button>

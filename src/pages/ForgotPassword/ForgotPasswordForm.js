@@ -88,7 +88,7 @@ const ForgotPasswordForm = () => {
                     <span className="text-sm text-red-600 flex">
                         <img
                             className="mr-1 w-5 h-5"
-                            src={require('../../../assets/img/validation/error-warning-fill.png')}
+                            src={require('assets/img/validation/error-warning-fill.png')}
                             alt="error"
                         />
                         {errors.email?.message}
