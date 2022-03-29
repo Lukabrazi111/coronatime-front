@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import api from 'utilities/axios-hook';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import Notification from 'UI/Notification';
+import Notification from 'pages/UI/Notification';
 
 const ResetPasswordForm = () => {
     const { t } = useTranslation();

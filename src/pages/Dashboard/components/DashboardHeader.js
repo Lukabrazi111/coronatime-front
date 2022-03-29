@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import LanguageContext from 'context/language-context';
 import AuthContext from 'context/auth-context';
 import { useTranslation } from 'react-i18next';
-import LogoutModal from 'UI/LogoutModal';
+import LogoutModal from 'pages/UI/LogoutModal';
 
 const DashboardHeader = (props) => {
     const { t } = useTranslation();

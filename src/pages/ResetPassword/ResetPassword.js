@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from 'components/Layout';
-import ResetPasswordForm from './ResetPasswordForm';
+import ResetPasswordForm from 'pages/ResetPassword/ResetPasswordForm';
 import { useTranslation } from 'react-i18next';
 
 const ResetPassword = () => {

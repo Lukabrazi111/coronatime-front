@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import api from 'utilities/axios-hook';
 import axios from 'axios';
 import AuthContext from 'context/auth-context';
-import Loading from 'UI/Loading';
+import Loading from 'pages/UI/Loading';
 
 const LoginForm = () => {
     const { t } = useTranslation();

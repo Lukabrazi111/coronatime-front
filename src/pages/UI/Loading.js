@@ -1,11 +1,11 @@
 import React from 'react';
 
-import './Loading.css';
+import 'pages/UI/Loading.css';
 
 const Loading = () => {
     return (
         <React.Fragment>
-            <div className="lds-ripple">
+            <div className='lds-ripple'>
                 <div></div>
                 <div></div>
             </div>

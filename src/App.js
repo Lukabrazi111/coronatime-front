@@ -8,8 +8,8 @@ import NotFound from './components/Error/NotFound';
 import Dashboard from './pages/Dashboard/Dashboard';
 import DashboardByCountry from './pages/Dashboard/components/DashboardByCountry';
 import ResetPassword from './pages/ResetPassword/ResetPassword';
-import AccountConfirmed from './UI/AccountConfirmed';
-import PasswordChanged from './UI/PasswordChanged';
+import AccountConfirmed from './pages/UI/AccountConfirmed';
+import PasswordChanged from './pages/UI/PasswordChanged';
 import AuthContext from './context/auth-context';
 
 function App() {
