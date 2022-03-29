@@ -59,46 +59,46 @@ const DashboardByCountryLists = () => {
 
     return (
         <div>
-            <div className="mb-8">
-                <div className="relative w-full max-w-xss">
+            <div className='mb-8'>
+                <div className='relative w-full max-w-xss'>
                     <div>
                         <img
-                            className="absolute top-2/4 left-5 transform -translate-y-1/2 text-center"
+                            className='absolute top-2/4 left-5 transform -translate-y-1/2 text-center'
                             src={require('assets/img/search.png')}
-                            alt="search"
+                            alt='search'
                         />
                     </div>
-                    <div className="ml-3 md:m-0">
+                    <div className='ml-3 md:m-0'>
                         <input
                             onChange={(e) => setSearch(e.target.value)}
-                            type="search"
-                            id="search"
-                            className="md:w-72 pl-14 rounded-lg outline-none focus:outline-none border border-gray-200 py-3"
+                            type='search'
+                            id='search'
+                            className='md:w-72 pl-14 rounded-lg outline-none focus:outline-none border border-gray-200 py-3'
                             placeholder={t('Search by country')}
                         />
                     </div>
                 </div>
             </div>
 
-            <div className="overflow-auto relative h-125">
+            <div className='overflow-auto relative h-125'>
                 {isLoading ? (
                     <Loading />
                 ) : (
-                    <table className="divide-y divide-gray-200 w-full text-left">
-                        <thead className="bg-gray-200">
+                    <table className='divide-y divide-gray-200 w-full text-left'>
+                        <thead className='bg-gray-200'>
                             <tr>
-                                <th className="md:w-64 md:p-5 py-5 text-xs text-black md:rounded-tl-lg">
-                                    <div className="flex gap-2">
+                                <th className='md:w-64 md:p-5 py-5 text-xs text-black md:rounded-tl-lg'>
+                                    <div className='flex gap-2'>
                                         {t('Location')}
                                     </div>
                                 </th>
-                                <th className="md:w-64 relative text-xs text-black">
+                                <th className='md:w-64 relative text-xs text-black'>
                                     <div
                                         onClick={() => sortBy('confirmed')}
-                                        className="md:flex absolute top-5 inline-block md:gap-2 break-all"
+                                        className='md:flex absolute top-5 inline-block md:gap-2 break-all'
                                     >
                                         {t('New cases')}
-                                        <div className="md:flex inline-flex flex-col items-center">
+                                        <div className='md:flex inline-flex flex-col items-center'>
                                             {order === 'asc' &&
                                             column === 'confirmed' ? (
                                                 <button>
@@ -107,15 +107,15 @@ const DashboardByCountryLists = () => {
                                                             'rotate-180 mb-1 w-2.5'
                                                         }
                                                         src={require('assets/img/black-arrow.png')}
-                                                        alt="blackArrow"
+                                                        alt='blackArrow'
                                                     />
                                                 </button>
                                             ) : (
                                                 <button>
                                                     <img
-                                                        className="mb-1 w-2.5"
+                                                        className='mb-1 w-2.5'
                                                         src={require('assets/img/arrow-up.png')}
-                                                        alt="arrowUp"
+                                                        alt='arrowUp'
                                                     />
                                                 </button>
                                             )}
@@ -124,30 +124,30 @@ const DashboardByCountryLists = () => {
                                             column === 'confirmed' ? (
                                                 <button>
                                                     <img
-                                                        className="w-2.5"
+                                                        className='w-2.5'
                                                         src={require('assets/img/black-arrow.png')}
-                                                        alt="blackArrow"
+                                                        alt='blackArrow'
                                                     />
                                                 </button>
                                             ) : (
                                                 <button>
                                                     <img
-                                                        className="mb-1 w-2.5 rotate-180"
+                                                        className='mb-1 w-2.5 rotate-180'
                                                         src={require('assets/img/arrow-up.png')}
-                                                        alt="arrowUp"
+                                                        alt='arrowUp'
                                                     />
                                                 </button>
                                             )}
                                         </div>
                                     </div>
                                 </th>
-                                <th className="md:w-64 relative text-xs text-black">
+                                <th className='md:w-64 relative text-xs text-black'>
                                     <div
                                         onClick={() => sortBy('deaths')}
-                                        className="md:flex absolute top-5 inline-block md:gap-2 break-all"
+                                        className='md:flex absolute top-5 inline-block md:gap-2 break-all'
                                     >
                                         {t('Deaths')}
-                                        <div className="md:flex inline-flex flex-col items-center">
+                                        <div className='md:flex inline-flex flex-col items-center'>
                                             {order === 'asc' &&
                                             column === 'deaths' ? (
                                                 <button>
@@ -156,15 +156,15 @@ const DashboardByCountryLists = () => {
                                                             'rotate-180 mb-1 w-2.5'
                                                         }
                                                         src={require('assets/img/black-arrow.png')}
-                                                        alt="blackArrow"
+                                                        alt='blackArrow'
                                                     />
                                                 </button>
                                             ) : (
                                                 <button>
                                                     <img
-                                                        className="mb-1 w-2.5"
+                                                        className='mb-1 w-2.5'
                                                         src={require('assets/img/arrow-up.png')}
-                                                        alt="arrowUp"
+                                                        alt='arrowUp'
                                                     />
                                                 </button>
                                             )}
@@ -173,30 +173,30 @@ const DashboardByCountryLists = () => {
                                             column === 'deaths' ? (
                                                 <button>
                                                     <img
-                                                        className="w-2.5"
+                                                        className='w-2.5'
                                                         src={require('assets/img/black-arrow.png')}
-                                                        alt="blackArrow"
+                                                        alt='blackArrow'
                                                     />
                                                 </button>
                                             ) : (
                                                 <button>
                                                     <img
-                                                        className="mb-1 w-2.5 rotate-180"
+                                                        className='mb-1 w-2.5 rotate-180'
                                                         src={require('assets/img/arrow-up.png')}
-                                                        alt="arrowUp"
+                                                        alt='arrowUp'
                                                     />
                                                 </button>
                                             )}
                                         </div>
                                     </div>
                                 </th>
-                                <th className="md:w-64 relative text-xs text-black">
+                                <th className='md:w-64 relative text-xs text-black'>
                                     <div
                                         onClick={() => sortBy('recovered')}
-                                        className="md:flex absolute top-5 inline-block md:gap-2 break-all"
+                                        className='md:flex absolute top-5 inline-block md:gap-2 break-all'
                                     >
                                         {t('Recovered')}
-                                        <div className="md:flex inline-flex flex-col items-center">
+                                        <div className='md:flex inline-flex flex-col items-center'>
                                             {order === 'asc' &&
                                             column === 'recovered' ? (
                                                 <button>
@@ -205,15 +205,15 @@ const DashboardByCountryLists = () => {
                                                             'rotate-180 mb-1 w-2.5'
                                                         }
                                                         src={require('assets/img/black-arrow.png')}
-                                                        alt="blackArrow"
+                                                        alt='blackArrow'
                                                     />
                                                 </button>
                                             ) : (
                                                 <button>
                                                     <img
-                                                        className="mb-1 w-2.5"
+                                                        className='mb-1 w-2.5'
                                                         src={require('assets/img/arrow-up.png')}
-                                                        alt="arrowUp"
+                                                        alt='arrowUp'
                                                     />
                                                 </button>
                                             )}
@@ -222,49 +222,49 @@ const DashboardByCountryLists = () => {
                                             column === 'recovered' ? (
                                                 <button>
                                                     <img
-                                                        className="w-2.5"
+                                                        className='w-2.5'
                                                         src={require('assets/img/black-arrow.png')}
-                                                        alt="blackArrow"
+                                                        alt='blackArrow'
                                                     />
                                                 </button>
                                             ) : (
                                                 <button>
                                                     <img
-                                                        className="mb-1 w-2.5 rotate-180"
+                                                        className='mb-1 w-2.5 rotate-180'
                                                         src={require('assets/img/arrow-up.png')}
-                                                        alt="arrowUp"
+                                                        alt='arrowUp'
                                                     />
                                                 </button>
                                             )}
                                         </div>
                                     </div>
                                 </th>
-                                <th className="md:w-32 py-2 text-xs text-black"></th>
-                                <th className="md:w-32 py-2 text-xs text-black md:rounded-tr-lg"></th>
+                                <th className='md:w-32 py-2 text-xs text-black'></th>
+                                <th className='md:w-32 py-2 text-xs text-black md:rounded-tr-lg'></th>
                             </tr>
                         </thead>
 
-                        <tbody className="bg-white divide-y divide-gray-200">
+                        <tbody className='bg-white divide-y divide-gray-200'>
                             {filteredData.map((item) => (
-                                <tr key={item.id} className="whitespace-nowrap">
-                                    <td className="md:p-5 text-sm pl-2 text-black">
+                                <tr key={item.id} className='whitespace-nowrap'>
+                                    <td className='md:p-5 text-sm pl-2 text-black'>
                                         {item.name[langCtx.lang]}
                                     </td>
                                     <td>
-                                        <div className="text-sm text-black">
+                                        <div className='text-sm text-black'>
                                             {item.confirmed}
                                         </div>
                                     </td>
-                                    <td className="">
-                                        <div className="text-sm text-black">
+                                    <td className=''>
+                                        <div className='text-sm text-black'>
                                             {item.deaths}
                                         </div>
                                     </td>
-                                    <td className="py-4 text-sm text-black">
+                                    <td className='py-4 text-sm text-black'>
                                         {item.recovered}
                                     </td>
-                                    <td className="py-4"></td>
-                                    <td className="py-4"></td>
+                                    <td className='py-4'></td>
+                                    <td className='py-4'></td>
                                 </tr>
                             ))}
                         </tbody>

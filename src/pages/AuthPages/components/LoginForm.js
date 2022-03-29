@@ -58,11 +58,11 @@ const LoginForm = () => {
     return (
         <form
             onSubmit={handleSubmit(submitFormHandler)}
-            method="post"
-            className="flex flex-col w-full mt-2 md:w-6/12"
+            method='post'
+            className='flex flex-col w-full mt-2 md:w-6/12'
         >
-            <div className="flex flex-col relative">
-                <label htmlFor="username" className="mb-2">
+            <div className='flex flex-col relative'>
+                <label htmlFor='username' className='mb-2'>
                     {t('Username')}
                 </label>
                 <input
@@ -81,24 +81,24 @@ const LoginForm = () => {
                         errors.username && 'border-red-600'
                     } mb-1 placeholder-dark`}
                     required
-                    type="text"
-                    name="username"
+                    type='text'
+                    name='username'
                     placeholder={t('Enter unique username or email')}
                 />
             </div>
-            <span className="text-sm text-red-600 flex mb-2 mt-1">
+            <span className='text-sm text-red-600 flex mb-2 mt-1'>
                 {errors.username && (
                     <img
-                        className="mr-1 w-5 h-5"
+                        className='mr-1 w-5 h-5'
                         src={require('assets/img/validation/error-warning-fill.png')}
-                        alt="error"
+                        alt='error'
                     />
                 )}
                 {errors.username?.message}
             </span>
 
-            <div className="flex flex-col relative">
-                <label htmlFor="password" className="mb-2">
+            <div className='flex flex-col relative'>
+                <label htmlFor='password' className='mb-2'>
                     {t('Password')}
                 </label>
                 <input
@@ -117,18 +117,18 @@ const LoginForm = () => {
                         errors.password ? 'border-red-600' : 'border-gray-200'
                     } mb-1 placeholder-dark`}
                     required
-                    type="password"
-                    name="password"
-                    id="password"
+                    type='password'
+                    name='password'
+                    id='password'
                     placeholder={t('Fill in password')}
                 />
-                <p className="text-red-600">{t(error.error_message)}</p>
-                <span className="text-sm text-red-600 flex mb-2 mt-1">
+                <p className='text-red-600'>{t(error.error_message)}</p>
+                <span className='text-sm text-red-600 flex mb-2 mt-1'>
                     {errors.password && (
                         <img
-                            className="mr-1 w-5 h-5"
+                            className='mr-1 w-5 h-5'
                             src={require('assets/img/validation/error-warning-fill.png')}
-                            alt="error"
+                            alt='error'
                         />
                     )}
                     {errors.password?.message}
@@ -138,22 +138,22 @@ const LoginForm = () => {
             {isLoading ? (
                 <Loading />
             ) : (
-                <div className="flex justify-between items-center mt-2">
-                    <div className="flex items-center gap-1">
+                <div className='flex justify-between items-center mt-2'>
+                    <div className='flex items-center gap-1'>
                         <input
-                            type="checkbox"
-                            id="remember"
-                            name="remember"
-                            className="border border-gray-200 text-success transition duration-100 ease-in rounded-4 form-checkbox"
+                            type='checkbox'
+                            id='remember'
+                            name='remember'
+                            className='border border-gray-200 text-success transition duration-100 ease-in rounded-4 form-checkbox'
                         />
-                        <label className="ml-1" htmlFor="remember">
+                        <label className='ml-1' htmlFor='remember'>
                             {t('Remember this device')}
                         </label>
                     </div>
                     <div>
                         <Link
-                            className="hover:underline text-link"
-                            to="/forgot-password"
+                            className='hover:underline text-link'
+                            to='/forgot-password'
                         >
                             {t('Forgot password?')}
                         </Link>
@@ -163,17 +163,17 @@ const LoginForm = () => {
 
             <div>
                 <button
-                    type="submit"
-                    className="py-4 transition duration-150 ease-in text-white font-semibold
-             uppercase hover:bg-hover-success bg-success my-5 w-full rounded-md"
+                    type='submit'
+                    className='py-4 transition duration-150 ease-in text-white font-semibold
+             uppercase hover:bg-hover-success bg-success my-5 w-full rounded-md'
                 >
                     {t('Log In')}
                 </button>
             </div>
 
-            <div className="flex items-center justify-center space-x-2">
-                <p className="text-dark">{t("Don't have an account?")}</p>
-                <Link to="/register" className="font-semibold hover:underline">
+            <div className='flex items-center justify-center space-x-2'>
+                <p className='text-dark'>{t("Don't have an account?")}</p>
+                <Link to='/register' className='font-semibold hover:underline'>
                     {t('Sign Up for free')}
                 </Link>
             </div>

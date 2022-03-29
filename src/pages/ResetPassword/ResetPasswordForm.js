@@ -71,12 +71,12 @@ const ResetPasswordForm = () => {
             )}
             <form
                 onSubmit={handleSubmit(submitFormHandler)}
-                method="post"
-                className="flex flex-col mt-4 w-full max-w-lg"
+                method='post'
+                className='flex flex-col mt-4 w-full max-w-lg'
             >
                 <label
-                    htmlFor="password"
-                    className="mb-2 text-left font-semibold"
+                    htmlFor='password'
+                    className='mb-2 text-left font-semibold'
                 >
                     {t('New password')}
                 </label>
@@ -94,25 +94,25 @@ const ResetPasswordForm = () => {
                     className={`px-4 py-4 rounded-lg border ${
                         errors.password && 'border-red-600'
                     } mb-2 placeholder-dark`}
-                    type="password"
-                    name="password"
-                    id="password"
+                    type='password'
+                    name='password'
+                    id='password'
                     placeholder={t('Enter new password')}
                 />
                 {errors.password && (
-                    <span className="text-sm text-red-600 flex mb-2 mt-1">
+                    <span className='text-sm text-red-600 flex mb-2 mt-1'>
                         <img
-                            className="mr-1 w-5 h-5"
+                            className='mr-1 w-5 h-5'
                             src={require('assets/img/validation/error-warning-fill.png')}
-                            alt="error"
+                            alt='error'
                         />
                         {errors.password?.message}
                     </span>
                 )}
 
                 <label
-                    htmlFor="password_confirmation"
-                    className="mb-2 text-left font-semibold"
+                    htmlFor='password_confirmation'
+                    className='mb-2 text-left font-semibold'
                 >
                     {t('Repeat password')}
                 </label>
@@ -136,31 +136,31 @@ const ResetPasswordForm = () => {
                             ),
                         },
                     })}
-                    id="repeat_password"
+                    id='repeat_password'
                     className={`px-4 py-4 rounded-lg border ${
                         errors.repeat_password && 'border-red-600'
                     } mb-1 placeholder-dark`}
                     required
-                    type="password"
-                    name="repeat_password"
+                    type='password'
+                    name='repeat_password'
                     placeholder={t('Repeat password')}
                 />
 
-                <span className="text-sm text-red-600 flex mb-2 mt-1">
+                <span className='text-sm text-red-600 flex mb-2 mt-1'>
                     {errors.repeat_password && (
                         <img
-                            className="mr-1 w-5 h-5"
+                            className='mr-1 w-5 h-5'
                             src={require('assets/img/validation/error-warning-fill.png')}
-                            alt="error"
+                            alt='error'
                         />
                     )}
                     {errors.repeat_password?.message}
                 </span>
                 <div>
                     <button
-                        type="submit"
-                        className="py-4 transition duration-150 ease-in text-white font-semibold
-                                 uppercase hover:bg-hover-success bg-success my-5 w-full rounded-md"
+                        type='submit'
+                        className='py-4 transition duration-150 ease-in text-white font-semibold
+                                 uppercase hover:bg-hover-success bg-success my-5 w-full rounded-md'
                     >
                         {t('Save Changes')}
                     </button>
