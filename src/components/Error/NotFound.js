@@ -5,7 +5,7 @@ const NotFound = () => {
     return (
         <div>
             <img
-                className="w-2/3 m-auto mt-24"
+                className='w-2/3 m-auto mt-24'
                 src={notFound}
                 alt={'notFound'}
             />
