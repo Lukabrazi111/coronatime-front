@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import Login from './pages/AuthPages/Login';
-import Register from './pages/AuthPages/Register';
+import Login from 'pages/AuthPages/Login';
+import Register from 'pages/AuthPages/Register';
 import { LanguageProvider } from 'context/language-context';
-import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
-import NotFound from './components/Error/NotFound';
-import Dashboard from './pages/Dashboard/Dashboard';
-import DashboardByCountry from './pages/Dashboard/components/DashboardByCountry';
-import ResetPassword from './pages/ResetPassword/ResetPassword';
-import AccountConfirmed from './pages/UI/AccountConfirmed';
-import PasswordChanged from './pages/UI/PasswordChanged';
-import AuthContext from './context/auth-context';
+import ForgotPassword from 'pages/ForgotPassword/ForgotPassword';
+import NotFound from 'components/Error/NotFound';
+import Dashboard from 'pages/Dashboard/Dashboard';
+import DashboardByCountry from 'pages/Dashboard/components/DashboardByCountry';
+import ResetPassword from 'pages/ResetPassword/ResetPassword';
+import AccountConfirmed from 'pages/UI/AccountConfirmed';
+import PasswordChanged from 'pages/UI/PasswordChanged';
+import AuthContext from 'context/auth-context';
 
 function App() {
     const authCtx = useContext(AuthContext);
