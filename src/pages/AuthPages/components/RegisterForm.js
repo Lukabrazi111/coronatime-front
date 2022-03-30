@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import api from 'utilities/axios-hook';
-import Loading from 'pages/UI/Loading';
-import Notification from 'pages/UI/Notification';
+import Loading from 'components/Loading';
+import Notification from 'components/Notification';
 
 const RegisterForm = () => {
     const { t } = useTranslation();

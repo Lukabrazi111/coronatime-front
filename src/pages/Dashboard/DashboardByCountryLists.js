@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import api from 'utilities/axios-hook';
 import LanguageContext from 'context/language-context';
-import Loading from 'pages/UI/Loading';
+import Loading from 'components/Loading';
 import AuthContext from 'context/auth-context';
 
 const DashboardByCountryLists = () => {

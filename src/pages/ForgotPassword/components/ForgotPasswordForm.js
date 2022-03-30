@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import api from 'utilities/axios-hook';
-import Notification from 'pages/UI/Notification';
-import Loading from 'pages/UI/Loading';
+import Notification from 'components/Notification';
+import Loading from 'components/Loading';
 
 const ForgotPasswordForm = () => {
     const { t } = useTranslation();

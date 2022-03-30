@@ -1,5 +1,5 @@
 import React from 'react';
-import ForgotPasswordForm from 'pages/ForgotPassword/ForgotPasswordForm';
+import ForgotPasswordForm from 'pages/ForgotPassword/components/ForgotPasswordForm';
 import Layout from 'components/Layout';
 import { useTranslation } from 'react-i18next';
 
