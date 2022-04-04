@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Login from 'pages/Login/Login';
-import Register from 'pages/Register';
+import Register from 'pages/Register/Register';
 import { LanguageProvider } from 'context/language-context';
 import ForgotPassword from 'pages/ForgotPassword/ForgotPassword';
 import NotFound from 'components/NotFound';
-import Dashboard from 'pages/Dashboard';
+import Dashboard from 'pages/Dashboard/Dashboard';
 import DashboardByCountry from 'pages/Dashboard/components/DashboardByCountry';
 import ResetPassword from 'pages/ResetPassword/ResetPassword';
 import AccountConfirmed from 'components/AccountConfirmed';

@@ -1,6 +1,6 @@
 import React from 'react';
 import DashboardHeader from 'pages/Dashboard/components/DashboardHeader';
-import DashboardByCountryLists from 'pages/Dashboard/DashboardByCountryLists';
+import DashboardByCountryLists from 'pages/Dashboard/components/DashboardByCountryLists';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
