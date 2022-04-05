@@ -5,7 +5,7 @@ import App from 'App';
 import { BrowserRouter } from 'react-router-dom';
 import 'i18n';
 import NotFound from 'components/NotFound';
-import { AuthContextProvider } from 'context/auth-context';
+import { AuthContextProvider } from 'context/authContext';
 
 ReactDOM.render(
     <AuthContextProvider>

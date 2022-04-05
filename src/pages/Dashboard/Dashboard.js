@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import DashboardHeader from 'pages/Dashboard/components/DashboardHeader';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import api from 'utilities/axios-hook';
+import api from 'utilities/axios';
 import Loading from 'components/Loading';
-import AuthContext from 'context/auth-context';
+import AuthContext from 'context/authContext';
 
 const Dashboard = () => {
     const { t } = useTranslation();

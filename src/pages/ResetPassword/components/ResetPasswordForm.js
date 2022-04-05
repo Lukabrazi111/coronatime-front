@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import api from 'utilities/axios-hook';
+import api from 'utilities/axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Notification from 'components/Notification';

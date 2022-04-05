@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import api from 'utilities/axios-hook';
+import api from 'utilities/axios';
 import Loading from 'components/Loading';
 import Notification from 'components/Notification';
 

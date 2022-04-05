@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Layout from 'components/Layout';
 import { useTranslation } from 'react-i18next';
-import api from 'utilities/axios-hook';
+import api from 'utilities/axios';
 
 const AccountConfirmed = () => {
     const { t } = useTranslation();
